@@ -1,0 +1,38 @@
+{
+    "subject": "Machine_Learning",
+    "level": "intermediate",
+    "results": [
+        {
+            "title": "Machine Learning for Everybody \u2013 Full Course - YouTube",
+            "link": "https://www.youtube.com/watch?v=i_LwzRVP7bg",
+            "tags": "YouTube Link"
+        },
+        {
+            "title": "Intermediate Machine Learning (Kaggle Learn & Exercise ) - YouTube",
+            "link": "https://www.youtube.com/watch?v=l6aRQEeXNWQ",
+            "tags": "YouTube Link"
+        },
+        {
+            "title": "Python Machine Learning Tutorial (Data Science) - YouTube",
+            "link": "https://www.youtube.com/watch?v=7eh4d6sabA0",
+            "tags": "YouTube Link"
+        },
+        {
+            "title": "notes.pdf",
+            "link": "https://marthawhite.github.io/ml-intermediate/notes.pdf",
+            "tags": "PDF Link"
+        },
+        {
+            "title": "MACHINE%20LEARNING(R17A0534).pdf",
+            "link": "https://mrcet.com/downloads/digital_notes/CSE/IV%20Year/MACHINE%20LEARNING(R17A0534).pdf",
+            "tags": "PDF Link"
+        },
+        {
+            "title": "Sebastian_Engelke_Exemple_de_production_etudiante.pdf",
+            "link": "https://www.unige.ch/innovations-pedagogiques/application/files/9015/8938/0183/Sebastian_Engelke_Exemple_de_production_etudiante.pdf",
+            "tags": "PDF Link"
+        }
+    ],
+    "udemy_courses": [],
+    "errors": []
+}
