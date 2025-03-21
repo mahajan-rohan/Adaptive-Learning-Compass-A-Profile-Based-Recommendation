@@ -28,13 +28,18 @@ export async function GET(request: Request): Promise<Response> {
     const title = id.replace(/_/g, " "); // Replace underscores with spaces
 
     // Fetch the previous marks based on the subject title (id)
-    const subject = userInfo.subjects.find((sub: any) => sub.title === title);
+    // Ensure both strings are trimmed and lowercased for comparison
+const subject = userInfo.subjects.find((sub: any) => {
+  console.log(sub.title.trim().toLowerCase(), title.trim().toLowerCase(), sub.title.trim().toLowerCase() === title.trim().toLowerCase());
+  return sub.title.trim().toLowerCase() === title.trim().toLowerCase();
+});
 
-    console.log(subject);
+console.log("subject", subject);
+
 
     const previousMarks = subject ? subject.previousMarks : 0;
     // checking if coding subject
-    const isCodingSubject = subject.isCodingSubject ? "1" : "2";
+    const isCodingSubject = subject?.isCodingSubject ? "1" : "2";
 
     if (category === "1") {
       // Student

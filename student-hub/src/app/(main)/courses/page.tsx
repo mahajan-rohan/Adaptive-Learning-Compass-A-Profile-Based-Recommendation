@@ -40,7 +40,12 @@ const Course = () => {
     totalMarks: 100,
     previousMarks: 0,
     updatedMarks: 0,
+    semester: "1",
     isCodingSubject: false,
+    attendance: 0,
+    studyHours: 0,
+    projectsBuilt: 0,
+  codingContestsAttempted: 0,
   });
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true); // Add loading state
@@ -188,6 +193,31 @@ const Course = () => {
         previousMarks: 0,
         updatedMarks: 0,
       });
+      const fetchCourses = async () => {
+        try {
+          const {
+            data: { token },
+          } = await axios.get("/api/getToken"); // Get Clerk JWT Token
+  
+          let response = await axios.get(
+            `http://localhost:5000/api/users/${user?.id}`,
+            { headers: { Authorization: `Bearer ${token}` } }
+          );
+  
+          setUser((prev) => ({ ...(prev || {}), ...response.data }));
+          if (response.status === 404 && response.data) {
+            router.push("/dashboard");
+          }
+  
+          setCourses(response.data.subjects);
+        } catch (error) {
+          router.push("/dashboard");
+        }
+      };
+      if (!showRegister) {
+        fetchCourses();
+      }
+      alert("course upadted successfully");
     } catch (error) {
       console.error("Error saving data:", error);
     }

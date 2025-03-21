@@ -1,38 +1,71 @@
 {
-    "subject": "Machine_Learning",
-    "level": "intermediate",
+    "subject": "Python",
+    "level": "beginner",
     "results": [
         {
-            "title": "Machine Learning for Everybody \u2013 Full Course - YouTube",
-            "link": "https://www.youtube.com/watch?v=i_LwzRVP7bg",
+            "title": "Python Full Course for Beginners [2025] - YouTube",
+            "link": "https://www.youtube.com/watch?v=K5KVEU3aaeQ",
             "tags": "YouTube Link"
         },
         {
-            "title": "Intermediate Machine Learning (Kaggle Learn & Exercise ) - YouTube",
-            "link": "https://www.youtube.com/watch?v=l6aRQEeXNWQ",
+            "title": "Python for Beginners - Learn Coding with Python in 1 Hour - YouTube",
+            "link": "https://www.youtube.com/watch?v=kqtD5dpn9C8",
             "tags": "YouTube Link"
         },
         {
-            "title": "Python Machine Learning Tutorial (Data Science) - YouTube",
-            "link": "https://www.youtube.com/watch?v=7eh4d6sabA0",
+            "title": "Python Basics for Beginners | Python tutorial - YouTube",
+            "link": "https://www.youtube.com/watch?v=fLAfa-BQtOQ",
             "tags": "YouTube Link"
         },
         {
-            "title": "notes.pdf",
-            "link": "https://marthawhite.github.io/ml-intermediate/notes.pdf",
+            "title": "ABeginnersGuideToPython3Progra.pdf",
+            "link": "https://mathstat.dal.ca/~brown/sound/python/ABeginnersGuideToPython3Progra.pdf",
             "tags": "PDF Link"
         },
         {
-            "title": "MACHINE%20LEARNING(R17A0534).pdf",
-            "link": "https://mrcet.com/downloads/digital_notes/CSE/IV%20Year/MACHINE%20LEARNING(R17A0534).pdf",
+            "title": "python-basics-sample-chapters.pdf",
+            "link": "https://static.realpython.com/python-basics-sample-chapters.pdf",
             "tags": "PDF Link"
         },
         {
-            "title": "Sebastian_Engelke_Exemple_de_production_etudiante.pdf",
-            "link": "https://www.unige.ch/innovations-pedagogiques/application/files/9015/8938/0183/Sebastian_Engelke_Exemple_de_production_etudiante.pdf",
+            "title": "beginners_python_cheat_sheet_pcc_all.pdf",
+            "link": "https://indico.global/event/6155/attachments/25456/43759/beginners_python_cheat_sheet_pcc_all.pdf",
             "tags": "PDF Link"
         }
     ],
-    "udemy_courses": [],
+    "udemy_courses": [
+        {
+            "title": "Web Programming with Python",
+            "link": "https://www.udemy.com/web-programming-with-python/"
+        },
+        {
+            "title": "Python Web Programming",
+            "link": "https://www.udemy.com/python-web-programming/"
+        },
+        {
+            "title": "Complete Python Web Course: Build 8 Python Web Apps",
+            "link": "https://www.udemy.com/the-complete-python-web-course-learn-by-building-8-apps/"
+        },
+        {
+            "title": "Introduction to QGIS Python Programming",
+            "link": "https://www.udemy.com/introduction-to-qgis-python-programming/"
+        },
+        {
+            "title": "Projects in Django and Python",
+            "link": "https://www.udemy.com/projects-in-django-and-python/"
+        },
+        {
+            "title": "Python Programming: Create an Digital Marketplace in Django",
+            "link": "https://www.udemy.com/coding-for-entrepreneurs-marketplace-daily-deals/"
+        },
+        {
+            "title": "Professional Python Web Development Using Flask",
+            "link": "https://www.udemy.com/python-flask-course/"
+        },
+        {
+            "title": "Learn Python Django - A Hands-On Course",
+            "link": "https://www.udemy.com/learn-python-django-a-hands-on-course/"
+        }
+    ],
     "errors": []
 }
