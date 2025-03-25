@@ -11,6 +11,7 @@ interface CourseProps {
     code: string;
     title: string;
     color: string;
+    semester?: any;
     marksObtained: number;
     totalMarks: number;
     previousMarks: number;
@@ -128,9 +129,14 @@ const Card = ({
         {/* Header with course code and edit button */}
         {type ? (
           <div className="flex justify-between items-center mb-2">
-            <span className="text-xs font-medium text-gray-400 bg-gray-800/50 px-2 py-1 rounded-md">
-              {course.code}
+            <div className="flex flex-col rounded-lg">
+            <span className="text-xs font-medium text-gray-400 bg-gray-800/50 px-2 py-1">
+              code : {course.code}
             </span>
+            <span className="text-xs font-medium text-gray-400 bg-gray-800/50 px-2 py-1">
+              semester : {course.semester}
+            </span>
+            </div>
             <button
               onClick={() => {
                 if (isEditing) handleSave();

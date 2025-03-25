@@ -1,70 +1,106 @@
 {
-    "subject": "Python",
-    "level": "beginner",
+    "subject": "Java",
+    "level": "advanced",
     "results": [
         {
-            "title": "Python Full Course for Beginners [2025] - YouTube",
-            "link": "https://www.youtube.com/watch?v=K5KVEU3aaeQ",
-            "tags": "YouTube Link"
+            "error": "YouTube link error",
+            "details": "HTTPSConnectionPool(host='www.google.com', port=443): Max retries exceeded with url: /search?q=Java+advanced+tutorial+site%3Ayoutube.com&num=12&hl=en&start=0&safe=active (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x0000025666DA6900>: Failed to resolve 'www.google.com' ([Errno 11001] getaddrinfo failed)\"))"
         },
         {
-            "title": "Python for Beginners - Learn Coding with Python in 1 Hour - YouTube",
-            "link": "https://www.youtube.com/watch?v=kqtD5dpn9C8",
-            "tags": "YouTube Link"
-        },
-        {
-            "title": "Python Basics for Beginners | Python tutorial - YouTube",
-            "link": "https://www.youtube.com/watch?v=fLAfa-BQtOQ",
-            "tags": "YouTube Link"
-        },
-        {
-            "title": "ABeginnersGuideToPython3Progra.pdf",
-            "link": "https://mathstat.dal.ca/~brown/sound/python/ABeginnersGuideToPython3Progra.pdf",
-            "tags": "PDF Link"
-        },
-        {
-            "title": "python-basics-sample-chapters.pdf",
-            "link": "https://static.realpython.com/python-basics-sample-chapters.pdf",
-            "tags": "PDF Link"
-        },
-        {
-            "title": "beginners_python_cheat_sheet_pcc_all.pdf",
-            "link": "https://indico.global/event/6155/attachments/25456/43759/beginners_python_cheat_sheet_pcc_all.pdf",
-            "tags": "PDF Link"
+            "error": "PDF link error",
+            "details": "HTTPSConnectionPool(host='www.google.com', port=443): Max retries exceeded with url: /search?q=Java+advanced+filetype%3Apdf&num=12&hl=en&start=0&safe=active (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x0000025666DA70E0>: Failed to resolve 'www.google.com' ([Errno 11001] getaddrinfo failed)\"))"
         }
     ],
     "udemy_courses": [
         {
-            "title": "Web Programming with Python",
-            "link": "https://www.udemy.com/web-programming-with-python/"
+            "title": "Building An E-Commerce Store Using Java Spring Framework",
+            "link": "https://www.udemy.com/building-an-e-commerce-store-using-java-spring-framework/"
         },
         {
-            "title": "Python Web Programming",
-            "link": "https://www.udemy.com/python-web-programming/"
+            "title": "Build An Online Bank With Java, Angular 2, Spring and More",
+            "link": "https://www.udemy.com/build-an-online-bank-with-java-angular-2-spring-and-more/"
         },
         {
-            "title": "Complete Python Web Course: Build 8 Python Web Apps",
-            "link": "https://www.udemy.com/the-complete-python-web-course-learn-by-building-8-apps/"
+            "title": "Spring Framework 4 (Java Enterprise JEE) with AngularJS",
+            "link": "https://www.udemy.com/java-spring-mvc-framework-with-angularjs-by-google-and-html5/"
         },
         {
-            "title": "Introduction to QGIS Python Programming",
-            "link": "https://www.udemy.com/introduction-to-qgis-python-programming/"
+            "title": "Mastering Micro Services Using Java Spring Boot",
+            "link": "https://www.udemy.com/mastering-micro-services-using-java-sprint-boot/"
         },
         {
-            "title": "Projects in Django and Python",
-            "link": "https://www.udemy.com/projects-in-django-and-python/"
+            "title": "Java Web Services Part 2",
+            "link": "https://www.udemy.com/javawebservicespart2/"
         },
         {
-            "title": "Python Programming: Create an Digital Marketplace in Django",
-            "link": "https://www.udemy.com/coding-for-entrepreneurs-marketplace-daily-deals/"
+            "title": "Professional Web Scraping with Java",
+            "link": "https://www.udemy.com/learn-web-scraping-with-java-in-just-1-hour/"
         },
         {
-            "title": "Professional Python Web Development Using Flask",
-            "link": "https://www.udemy.com/python-flask-course/"
+            "title": "Introduction to Java Programming for Online Learners",
+            "link": "https://www.udemy.com/learning-to-program-in-java-a-supplement-for-online-academic-learners/"
         },
         {
-            "title": "Learn Python Django - A Hands-On Course",
-            "link": "https://www.udemy.com/learn-python-django-a-hands-on-course/"
+            "title": "Servlets and JSPs Tutorial: Learn Web Applications With Java",
+            "link": "https://www.udemy.com/javawebtut/"
+        }
+    ],
+    "coursera_courses": [
+        {
+            "title": "Learn to Teach Java: Inheritance and Recursion",
+            "link": "https://www.coursera.org/learn/teach-java-inheritance-recursion"
+        },
+        {
+            "title": "Learn to Teach Java:  Writing Classes and Arrays",
+            "link": "https://www.coursera.org/learn/teach-java-classes-arrays"
+        },
+        {
+            "title": "Learn to Teach Java:  ArrayLists and 2D Arrays",
+            "link": "https://www.coursera.org/learn/teach-java-arraylist-2d-arrays"
+        },
+        {
+            "title": "Learn to Teach Java:  Sequences, Primitive Types and Using Objects",
+            "link": "https://www.coursera.org/learn/teach-java-sequences-primitive-types-object"
+        },
+        {
+            "title": "Building Modern Java Applications on AWS",
+            "link": "https://www.coursera.org/learn/building-modern-java-applications-on-aws"
+        },
+        {
+            "title": "Building Cloud Services with the Java Spring Framework",
+            "link": "https://www.coursera.org/learn/cloud-services-java-spring-framework"
+        },
+        {
+            "title": "Learn Javascript with zero prior programming experience",
+            "link": "https://www.coursera.org/learn/learn-programming-with-javascript"
+        },
+        {
+            "title": "Web Application Development with JavaScript and MongoDB",
+            "link": "https://www.coursera.org/learn/web-application-development"
+        },
+        {
+            "title": "Hosting a Static Website (HTML/CSS/Javascript) in AWS S3",
+            "link": "https://www.coursera.org/learn/hosting-static-web-site-aws"
+        },
+        {
+            "title": "Front-End JavaScript Frameworks: Angular",
+            "link": "https://www.coursera.org/learn/angular"
+        },
+        {
+            "title": "JavaScript, jQuery, and JSON",
+            "link": "https://www.coursera.org/learn/javascript-jquery-json"
+        },
+        {
+            "title": "Quick resumeCreator with JavaScript",
+            "link": "https://www.coursera.org/learn/resume-creator-javascript"
+        },
+        {
+            "title": "Blazor and JavaScript Interoperability",
+            "link": "https://www.coursera.org/learn/blazor-javascript-interoperability"
+        },
+        {
+            "title": "JavaScript Arithmetic Operators",
+            "link": "https://www.coursera.org/learn/javascript-arithmetic-operators"
         }
     ],
     "errors": []
