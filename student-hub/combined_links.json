@@ -1,14 +1,36 @@
 {
     "subject": "Java",
-    "level": "advanced",
+    "level": "intermediate",
     "results": [
         {
-            "error": "YouTube link error",
-            "details": "HTTPSConnectionPool(host='www.google.com', port=443): Max retries exceeded with url: /search?q=Java+advanced+tutorial+site%3Ayoutube.com&num=12&hl=en&start=0&safe=active (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x0000025666DA6900>: Failed to resolve 'www.google.com' ([Errno 11001] getaddrinfo failed)\"))"
+            "title": "\ud83d\udd25Java Intermediate Full Course | Java Beginner To Advanced Full Course | Java 2022 | SimpliCode - YouTube",
+            "link": "https://www.youtube.com/watch?v=vIXcT4hbR0U&pp=ygUQI2l0cjJqYXZhdXRpbGl0eQ%3D%3D",
+            "tags": "YouTube Link"
         },
         {
-            "error": "PDF link error",
-            "details": "HTTPSConnectionPool(host='www.google.com', port=443): Max retries exceeded with url: /search?q=Java+advanced+filetype%3Apdf&num=12&hl=en&start=0&safe=active (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConnection object at 0x0000025666DA70E0>: Failed to resolve 'www.google.com' ([Errno 11001] getaddrinfo failed)\"))"
+            "title": "Intermediate Java Tutorial - 1 - Common String Methods - YouTube",
+            "link": "https://www.youtube.com/watch?v=vW53w7me4AE",
+            "tags": "YouTube Link"
+        },
+        {
+            "title": "Java Full Course for free \u2615 (2025) - YouTube",
+            "link": "https://www.youtube.com/watch?v=xTtL8E4LzTQ",
+            "tags": "YouTube Link"
+        },
+        {
+            "title": "02IntermediateJava.pdf",
+            "link": "https://web.stanford.edu/class/archive/cs/cs108/cs108.1092/handouts081/02IntermediateJava.pdf",
+            "tags": "PDF Link"
+        },
+        {
+            "title": "jmed-5.1.5.pdf",
+            "link": "https://www.itcourseware.com/docs/jmed-5.1.5/evals/jmed-5.1.5.pdf",
+            "tags": "PDF Link"
+        },
+        {
+            "title": "61812edcb7041531278eb4fc6f30fffe.pdf",
+            "link": "https://dl.icdst.org/pdfs/files3/61812edcb7041531278eb4fc6f30fffe.pdf",
+            "tags": "PDF Link"
         }
     ],
     "udemy_courses": [
@@ -47,60 +69,52 @@
     ],
     "coursera_courses": [
         {
-            "title": "Learn to Teach Java: Inheritance and Recursion",
-            "link": "https://www.coursera.org/learn/teach-java-inheritance-recursion"
+            "title": "Java for Android",
+            "link": "https://www.coursera.org/learn/java-for-android"
         },
         {
-            "title": "Learn to Teach Java:  Writing Classes and Arrays",
-            "link": "https://www.coursera.org/learn/teach-java-classes-arrays"
+            "title": "Advanced Data Structures in Java",
+            "link": "https://www.coursera.org/learn/Advanced-data-structures"
         },
         {
-            "title": "Learn to Teach Java:  ArrayLists and 2D Arrays",
-            "link": "https://www.coursera.org/learn/teach-java-arraylist-2d-arrays"
+            "title": "Parallel Programming in Java",
+            "link": "https://www.coursera.org/learn/parallel-programming-in-java"
         },
         {
-            "title": "Learn to Teach Java:  Sequences, Primitive Types and Using Objects",
-            "link": "https://www.coursera.org/learn/teach-java-sequences-primitive-types-object"
+            "title": "Distributed Programming in Java",
+            "link": "https://www.coursera.org/learn/distributed-programming-in-java"
         },
         {
-            "title": "Building Modern Java Applications on AWS",
-            "link": "https://www.coursera.org/learn/building-modern-java-applications-on-aws"
+            "title": "Concurrent Programming in Java",
+            "link": "https://www.coursera.org/learn/concurrent-programming-in-java"
         },
         {
-            "title": "Building Cloud Services with the Java Spring Framework",
-            "link": "https://www.coursera.org/learn/cloud-services-java-spring-framework"
+            "title": "Java Arrays and Loops",
+            "link": "https://www.coursera.org/learn/java-arrays-and-loops"
         },
         {
-            "title": "Learn Javascript with zero prior programming experience",
-            "link": "https://www.coursera.org/learn/learn-programming-with-javascript"
+            "title": "Java Programming: Principles of Software Design",
+            "link": "https://www.coursera.org/learn/java-programming-design-principles"
         },
         {
-            "title": "Web Application Development with JavaScript and MongoDB",
-            "link": "https://www.coursera.org/learn/web-application-development"
+            "title": "Java Programming: Solving Problems with Software",
+            "link": "https://www.coursera.org/learn/java-programming"
         },
         {
-            "title": "Hosting a Static Website (HTML/CSS/Javascript) in AWS S3",
-            "link": "https://www.coursera.org/learn/hosting-static-web-site-aws"
+            "title": "Java Programming: Solving Problems with Software",
+            "link": "https://www.coursera.org/learn/java-programming"
         },
         {
-            "title": "Front-End JavaScript Frameworks: Angular",
-            "link": "https://www.coursera.org/learn/angular"
+            "title": "Responsive Website Basics: Code with HTML, CSS, and JavaScript",
+            "link": "https://www.coursera.org/learn/website-coding"
         },
         {
-            "title": "JavaScript, jQuery, and JSON",
-            "link": "https://www.coursera.org/learn/javascript-jquery-json"
+            "title": "Interactivity with JavaScript",
+            "link": "https://www.coursera.org/learn/javascript"
         },
         {
-            "title": "Quick resumeCreator with JavaScript",
-            "link": "https://www.coursera.org/learn/resume-creator-javascript"
-        },
-        {
-            "title": "Blazor and JavaScript Interoperability",
-            "link": "https://www.coursera.org/learn/blazor-javascript-interoperability"
-        },
-        {
-            "title": "JavaScript Arithmetic Operators",
-            "link": "https://www.coursera.org/learn/javascript-arithmetic-operators"
+            "title": "Become a JavaScript Pro with these 7 Skills",
+            "link": "https://www.coursera.org/learn/become-a-js-pro-7-skills"
         }
     ],
     "errors": []
