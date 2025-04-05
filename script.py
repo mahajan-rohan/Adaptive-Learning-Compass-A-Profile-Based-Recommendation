@@ -736,6 +736,38 @@ if cousera_level_filtered.empty and not cousera_subject_error:
 # else:
 #     print(cousera_subject_error + cousera_level_error)
 
+#  ======================================= Links frim GFG,tpoinetech, tutorialspoint ======================== 
+results = []
+
+domains = ["geeksforgeeks.org", "tpointtech.com", "tutorialspoint.com"]
+domain_friendly = {
+    "geeksforgeeks.org": "Geeksforgeeks",
+    "tpointtech.com": "Tpointtech",
+    "tutorialspoint.com": "Tutorialspoint"
+}
+num_results = 10
+
+for domain in domains:
+    query = f"site:{domain} {subject_inp} {level_input}"
+    try:
+        urls = list(search(query, num_results=num_results))
+    except Exception as e:
+        urls = []
+    
+    for url in urls:
+        try:
+            response = requests.get(url, timeout=10)
+            if response.status_code != 200:
+                continue
+            soup = BeautifulSoup(response.text, 'html.parser')
+            if level_input in soup.get_text().lower():
+                results.append({
+                    "link": url,
+                    "website": domain_friendly.get(domain, domain)
+                })
+        except Exception as e:
+            continue
+
 combined_data = {
     "subject": subject_inp,
     "level": level_input,
@@ -749,7 +781,9 @@ combined_data = {
     "errors": subject_error + level_error
 }
 
+combined_data["links"] = results
+
 with open("combined_links.json", "w") as file:
     json.dump(combined_data, file, indent=4)
 
-print("Combined links saved to 'combined_links.json'")
+print("Combined links saved")
