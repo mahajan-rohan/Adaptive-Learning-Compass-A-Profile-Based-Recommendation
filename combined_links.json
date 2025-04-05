@@ -1,0 +1,103 @@
+{
+    "subject": "machine learning",
+    "level": "advanced",
+    "results": [
+        {
+            "title": "Machine Learning for Everybody \u2013 Full Course - YouTube",
+            "link": "https://www.youtube.com/watch?v=i_LwzRVP7bg",
+            "tags": "YouTube Link"
+        },
+        {
+            "title": "Complete Machine Learning In 6 Hours| Krish Naik - YouTube",
+            "link": "https://www.youtube.com/watch?v=JxgmHe2NyeY",
+            "tags": "YouTube Link"
+        },
+        {
+            "title": "Machine Learning Full Course 2025 | Machine Learning Tutorial For Beginners | Simplilearn - YouTube",
+            "link": "https://www.youtube.com/watch?v=rfc47UgajHM",
+            "tags": "YouTube Link"
+        },
+        {
+            "title": "LN_ML_Fall11.pdf",
+            "link": "https://www.ai.rug.nl/minds/uploads/LN_ML_Fall11.pdf",
+            "tags": "PDF Link"
+        },
+        {
+            "title": "lecture1.pdf",
+            "link": "https://www.cs.cmu.edu/~epxing/Class/10715/lectures/lecture1.pdf",
+            "tags": "PDF Link"
+        },
+        {
+            "title": "STAT_GR5242_slides.pdf",
+            "link": "https://sites.stat.columbia.edu/cunningham/teaching/GR5242/STAT_GR5242_slides.pdf",
+            "tags": "PDF Link"
+        }
+    ],
+    "udemy_courses": [],
+    "coursera_courses": [
+        {
+            "title": "Fundamentals of Machine Learning in Finance",
+            "link": "https://www.coursera.org/learn/fundamentals-machine-learning-in-finance"
+        },
+        {
+            "title": "Machine Learning for Accounting with Python",
+            "link": "https://www.coursera.org/learn/machine-learning-accounting-python"
+        },
+        {
+            "title": "Art and Science of Machine Learning",
+            "link": "https://www.coursera.org/learn/art-science-ml"
+        },
+        {
+            "title": "Machine Learning for Business Professionals",
+            "link": "https://www.coursera.org/learn/machine-learning-business-professionals"
+        },
+        {
+            "title": "Applied Machine Learning in Python",
+            "link": "https://www.coursera.org/learn/python-machine-learning"
+        },
+        {
+            "title": "Python and Machine Learning for Asset Management",
+            "link": "https://www.coursera.org/learn/python-machine-learning-for-investment-management"
+        },
+        {
+            "title": "Practical Machine Learning on H2O",
+            "link": "https://www.coursera.org/learn/machine-learning-h2o"
+        },
+        {
+            "title": "Machine Learning Using SAS Viya",
+            "link": "https://www.coursera.org/learn/machine-learning-sas"
+        },
+        {
+            "title": "Applying Machine Learning to your Data with GCP",
+            "link": "https://www.coursera.org/learn/data-insights-gcp-apply-ml"
+        },
+        {
+            "title": "Advanced Machine Learning and Signal Processing",
+            "link": "https://www.coursera.org/learn/Advanced-machine-learning-signal-processing"
+        },
+        {
+            "title": "Big Data Applications: Machine Learning at Scale",
+            "link": "https://www.coursera.org/learn/machine-learning-applications-big-data"
+        },
+        {
+            "title": "Interactive Machine Learning Dashboards using Plotly Dash",
+            "link": "https://www.coursera.org/learn/interactive-dashboards-plotly-dash"
+        },
+        {
+            "title": "Machine Learning Rapid Prototyping with IBM Watson Studio",
+            "link": "https://www.coursera.org/learn/ibm-rapid-prototyping-watson-studio-autoai"
+        },
+        {
+            "title": "Addressing Large Hadron Collider Challenges by Machine Learning",
+            "link": "https://www.coursera.org/learn/hadron-collider-machine-learning"
+        }
+    ],
+    "errors": [
+        {
+            "error": "No courses found for the subject: machine learning"
+        },
+        {
+            "error": "No courses found for the level: advanced"
+        }
+    ]
+}
