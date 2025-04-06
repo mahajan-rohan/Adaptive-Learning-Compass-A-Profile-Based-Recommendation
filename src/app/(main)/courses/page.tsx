@@ -33,7 +33,7 @@ const Course = () => {
   const [isNonStudent, setIsNonStudent] = useState(false);
   const [filter, setFilter] = useState<string>("all");
   const [newCourse, setNewCourse] = useState<Partial<Course>>({
-    code: "",
+    // code: "",
     title: "",
     color: COLORS[0],
     marksObtained: 0,
@@ -45,7 +45,7 @@ const Course = () => {
     attendance: 0,
     studyHours: 0,
     projectsBuilt: 0,
-  codingContestsAttempted: 0,
+    codingContestsAttempted: 0,
   });
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true); // Add loading state
@@ -54,6 +54,11 @@ const Course = () => {
     showRegister,
   } = useAppContext();
   const router = useRouter();
+  const handleDeleteCourse = (courseCode: string) => {
+    setCourses((prevCourses) =>
+      prevCourses.filter((course) => course.code !== courseCode)
+    );
+  };
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -85,6 +90,8 @@ const Course = () => {
         }
 
         setCourses(response.data.subjects);
+
+        console.log(response.data.subjects);
       } catch (error) {
         router.push("/dashboard");
       }
@@ -185,7 +192,7 @@ const Course = () => {
 
       alert("Data saved successfully!");
       setNewCourse({
-        code: " ",
+        // code: " ",
         title: " ",
         color: COLORS[0],
         marksObtained: 0,
@@ -198,17 +205,17 @@ const Course = () => {
           const {
             data: { token },
           } = await axios.get("/api/getToken"); // Get Clerk JWT Token
-  
+
           let response = await axios.get(
             `http://localhost:5000/api/users/${user?.id}`,
             { headers: { Authorization: `Bearer ${token}` } }
           );
-  
+
           setUser((prev) => ({ ...(prev || {}), ...response.data }));
           if (response.status === 404 && response.data) {
             router.push("/dashboard");
           }
-  
+
           setCourses(response.data.subjects);
         } catch (error) {
           router.push("/dashboard");
@@ -264,8 +271,10 @@ const Course = () => {
             key={index}
             course={course}
             onUpdateMarks={onUpdateMarks}
+            onDelete={handleDeleteCourse}
             link={`/resource/${course.title}`}
             type={type}
+            isCodingSubject={course.isCodingSubject}
           />
         ))}
       </div>
@@ -283,7 +292,7 @@ const Course = () => {
             </h3>
             <form onSubmit={handleAddCourse} className="space-y-4">
               {/* Course Code */}
-              <div>
+              {/* <div>
                 <label className="block text-gray-300 mb-1">Course Code</label>
                 <input
                   type="text"
@@ -294,7 +303,7 @@ const Course = () => {
                   className="w-full bg-gray-700/50 text-white rounded px-3 py-2"
                   required
                 />
-              </div>
+              </div> */}
 
               {/* Course Title */}
               <div>

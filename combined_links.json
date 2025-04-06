@@ -1,30 +1,30 @@
 {
     "subject": "Data Structures",
-    "level": "beginner",
+    "level": "intermediate",
     "results": [
+        {
+            "title": "Data Structures Easy to Advanced Course - Full Tutorial from a Google Engineer - YouTube",
+            "link": "https://www.youtube.com/watch?v=RBSGKlAvoiM",
+            "tags": "YouTube Link"
+        },
         {
             "title": "Algorithms and Data Structures Tutorial - Full Course for Beginners - YouTube",
             "link": "https://www.youtube.com/watch?v=8hly31xKli0",
             "tags": "YouTube Link"
         },
         {
-            "title": "Basic Data Structures: Explained for Beginners | Computer Programming Tutorial - KnowledgeHut - YouTube",
-            "link": "https://www.youtube.com/watch?v=KXIi5sJwk4M",
+            "title": "Introduction to Data Structures & Algorithms - YouTube",
+            "link": "https://www.youtube.com/watch?v=5_5oE5lgrhw",
             "tags": "YouTube Link"
         },
         {
-            "title": "Data Structures and Algorithms in Python - Full Course for Beginners - YouTube",
-            "link": "https://www.youtube.com/watch?v=pkYVOmU3MgA",
-            "tags": "YouTube Link"
-        },
-        {
-            "title": "1-198436-DS%20Notes-KGPTC.pdf",
-            "link": "http://kgptc.in/en/uploadPics/1-198436-DS%20Notes-KGPTC.pdf",
+            "title": "DECAP770_ADVANCED_DATA_STRUCTURES.pdf",
+            "link": "https://www.lpude.in/SLMs/Master%20of%20Computer%20Applications/Sem_2/DECAP770_ADVANCED_DATA_STRUCTURES.pdf",
             "tags": "PDF Link"
         },
         {
-            "title": "Data-Structure-Final-.pdf",
-            "link": "https://mu.ac.in/wp-content/uploads/2021/05/Data-Structure-Final-.pdf",
+            "title": "Advanced-Data-Structures.pdf",
+            "link": "https://prajyotiniketan.edu.in/uchophee/2021/06/Advanced-Data-Structures.pdf",
             "tags": "PDF Link"
         },
         {
@@ -37,27 +37,15 @@
     "coursera_courses": [
         {
             "title": "Python Data Structures",
-            "link": "https://www.coursera.org/learn/python-data-structures"
+            "link": "https://www.coursera.org/learn/python-data"
         },
         {
-            "title": "Data Structures and Performance",
-            "link": "https://www.coursera.org/learn/data-structures-optimizing-performance"
+            "title": "Advanced Data Structures in Java",
+            "link": "https://www.coursera.org/learn/Advanced-data-structures"
         },
         {
-            "title": "Data Structures and Performance",
-            "link": "https://www.coursera.org/learn/data-structures-optimizing-performance"
-        },
-        {
-            "title": "Object-Oriented Data Structures in C++",
-            "link": "https://www.coursera.org/learn/cs-fundamentals-1"
-        },
-        {
-            "title": "Java Built in Data Structures",
-            "link": "https://www.coursera.org/learn/java-built-in-data-structures"
-        },
-        {
-            "title": "Applying Data Structures to Manipulate Cleansed UN Data",
-            "link": "https://www.coursera.org/learn/applying-data-structures"
+            "title": "Ordered Data Structures",
+            "link": "https://www.coursera.org/learn/cs-fundamentals-2"
         }
     ],
     "errors": [
@@ -65,49 +53,25 @@
             "error": "No courses found for the subject: Data Structures"
         },
         {
-            "error": "No courses found for the level: beginner"
+            "error": "No courses found for the level: intermediate"
         }
     ],
     "links": [
         {
-            "link": "https://www.geeksforgeeks.org/data-structures/",
+            "link": "https://www.geeksforgeeks.org/quizzes/top-50-data-structures-mcqs-with-answers/",
             "website": "Geeksforgeeks"
         },
         {
-            "link": "https://www.geeksforgeeks.org/complete-guide-to-dsa-for-beginners/",
-            "website": "Geeksforgeeks"
+            "link": "https://www.tpointtech.com/data-structure-algorithm",
+            "website": "Tpointtech"
         },
         {
-            "link": "https://www.geeksforgeeks.org/learn-data-structures-and-algorithms-dsa-tutorial/?ref=lbp",
-            "website": "Geeksforgeeks"
+            "link": "https://www.tpointtech.com/application-of-data-structure",
+            "website": "Tpointtech"
         },
         {
-            "link": "https://www.geeksforgeeks.org/basic-coding-problems-in-dsa-for-beginners/",
-            "website": "Geeksforgeeks"
-        },
-        {
-            "link": "https://www.geeksforgeeks.org/most-asked-dsa-interview-problems-for-beginners/",
-            "website": "Geeksforgeeks"
-        },
-        {
-            "link": "https://www.geeksforgeeks.org/introduction-to-data-structures/",
-            "website": "Geeksforgeeks"
-        },
-        {
-            "link": "https://www.geeksforgeeks.org/complete-roadmap-to-learn-dsa-from-scratch/",
-            "website": "Geeksforgeeks"
-        },
-        {
-            "link": "https://www.geeksforgeeks.org/what-should-i-learn-first-data-structures-or-algorithms/",
-            "website": "Geeksforgeeks"
-        },
-        {
-            "link": "https://www.geeksforgeeks.org/what-is-data-structure-types-classifications-and-applications/",
-            "website": "Geeksforgeeks"
-        },
-        {
-            "link": "https://www.geeksforgeeks.org/introduction-to-set-data-structure/",
-            "website": "Geeksforgeeks"
+            "link": "https://www.tpointtech.com/data-structures-and-algorithms-in-python",
+            "website": "Tpointtech"
         },
         {
             "link": "https://www.tpointtech.com/best-books-for-data-structures-and-algorithms",
@@ -118,36 +82,52 @@
             "website": "Tpointtech"
         },
         {
+            "link": "https://www.tpointtech.com/applications-of-stack-in-data-structure",
+            "website": "Tpointtech"
+        },
+        {
             "link": "https://www.tpointtech.com/python-books-for-data-structures-and-algorithms",
             "website": "Tpointtech"
         },
         {
-            "link": "https://www.tpointtech.com/a-beginners-guide-to-the-data-science-pipeline",
+            "link": "https://www.tpointtech.com/data-structure-for-symbol-table",
             "website": "Tpointtech"
         },
         {
-            "link": "https://www.tpointtech.com/advantages-and-disadvantages-of-data-structure",
+            "link": "https://www.tpointtech.com/data-structures-and-algorithms-in-python-set-1",
             "website": "Tpointtech"
         },
         {
-            "link": "https://www.tpointtech.com/advanced-data-structures-and-algorithms-in-python",
+            "link": "https://www.tpointtech.com/user-defined-data-structures-in-python",
             "website": "Tpointtech"
         },
         {
-            "link": "https://www.tpointtech.com/data-analysis-tools-for-beginners-and-experts",
-            "website": "Tpointtech"
+            "link": "https://www.tutorialspoint.com/data_structures_algorithms/index.htm",
+            "website": "Tutorialspoint"
         },
         {
-            "link": "https://www.tpointtech.com/graph-data-structure-in-python",
-            "website": "Tpointtech"
+            "link": "https://www.tutorialspoint.com/dsa_using_java/index.htm",
+            "website": "Tutorialspoint"
         },
         {
-            "link": "https://www.tpointtech.com/graph-algorithms",
-            "website": "Tpointtech"
+            "link": "https://www.tutorialspoint.com/c-intermediate-part-iii-abstract-data-structures-and-sorting-algorithms/index.asp",
+            "website": "Tutorialspoint"
         },
         {
-            "link": "https://www.tpointtech.com/7-resources-for-those-wanting-to-learn-data-science",
-            "website": "Tpointtech"
+            "link": "https://www.tutorialspoint.com/java_data_structures/index.htm",
+            "website": "Tutorialspoint"
+        },
+        {
+            "link": "https://academy.tutorialspoint.com/course/introduction-to-data-structures-amp-algorithms/index.asp",
+            "website": "Tutorialspoint"
+        },
+        {
+            "link": "https://academy.tutorialspoint.com/ebook/data-structures-and-algorithms-tutorial/index.asp",
+            "website": "Tutorialspoint"
+        },
+        {
+            "link": "https://www.tutorialspoint.com/functional_programming_with_java/functional_programming_with_java_intermediate_methods.htm",
+            "website": "Tutorialspoint"
         }
     ]
 }

@@ -43,9 +43,24 @@ export default function SubjectsStep({
   });
 
   const addSubject = () => {
+
+      if (!newSubject.code?.trim() || !newSubject.title?.trim()) {
+        alert("Course code and title are required.");
+        return;
+      }
+
+      // Check for duplicate course codes
+      const isDuplicateCode = subjects.some(
+        (subject) => subject.code === newSubject.code
+      );
+      if (isDuplicateCode) {
+        alert(`Course with code "${newSubject.code}" already exists.`);
+        return;
+      }
+
     if (newSubject.title?.trim()) {
       const newSubjectObj: Subject = {
-        code: `SUB${subjects.length + 1}`,
+        code: newSubject.code.trim(),
         title: newSubject.title.trim(),
         color: newSubject.color ?? "blue",
         marksObtained: newSubject.marksObtained ?? 0,
@@ -98,6 +113,17 @@ export default function SubjectsStep({
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
+      <div className="space-y-2">
+        <Label htmlFor="courseCode">Course Code</Label>
+        <Input
+          id="courseCode"
+          value={newSubject.code}
+          onChange={(e) =>
+            setNewSubject({ ...newSubject, code: e.target.value })
+          }
+          placeholder="Enter unique course code"
+        />
+      </div>
       <div className="space-y-2">
         <Label htmlFor="courseTitle">Course Title</Label>
         <Input
@@ -294,8 +320,8 @@ export default function SubjectsStep({
                       attendance: Number(e.target.value),
                     })
                   }
-                    min={0}
-                    max={100}
+                  min={0}
+                  max={100}
                 />
               </div>
               <div className="space-y-2">
@@ -310,8 +336,8 @@ export default function SubjectsStep({
                       studyHours: Number(e.target.value),
                     })
                   }
-                    min={0}
-                    max={24}
+                  min={0}
+                  max={24}
                 />
               </div>
             </>

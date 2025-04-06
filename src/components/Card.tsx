@@ -2,7 +2,14 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "motion/react";
-import { TrendingUp, TrendingDown, Minus, Edit2, Save } from "lucide-react";
+import {
+  TrendingUp,
+  TrendingDown,
+  Minus,
+  Edit2,
+  Save,
+  Trash2,
+} from "lucide-react";
 import axios from "axios";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -33,45 +40,75 @@ interface CourseProps {
       studyHours?: number;
     }
   ) => void;
+  onDelete: (courseCode: string) => void; // New prop for handling deletion in the parent component
   link?: string;
   type?: boolean;
+  isCodingSubject?: boolean;
 }
 
 const Card = ({
   course,
   onUpdateMarks,
+  onDelete,
   link = "#",
   type = true,
+  isCodingSubject = true,
 }: CourseProps) => {
-  const url = usePathname(); // Initialize useRouter
+  const url = usePathname();
   const [isEditing, setIsEditing] = useState(false);
-  const [isHidden, setIsHidden] = useState(false);
-  const [previousMarks, setPreviousMarks] = useState(course.previousMarks);
-  const [updatedMarks, setUpdatedMarks] = useState(course.updatedMarks);
-  const [codingContestsAttempted, setCodingContestsAttempted] = useState(
+  const [isHovered, setIsHovered] = useState(false);
+
+  // Local state variables for editing
+  const [editedPreviousMarks, setEditedPreviousMarks] = useState(
+    course.previousMarks
+  );
+  const [editedUpdatedMarks, setEditedUpdatedMarks] = useState(
+    course.updatedMarks
+  );
+  const [editedCodingContests, setEditedCodingContests] = useState(
     course.codingContestsAttempted || 0
   );
-  const [projectsBuilt, setProjectsBuilt] = useState(course.projectsBuilt || 0);
-  const [attendance, setAttendance] = useState(course.attendance || 0);
-  const [studyHours, setStudyHours] = useState(course.studyHours || 0);
-  const [isHovered, setIsHovered] = useState(false);
-  const [isCodingSubject, setIsCodingSubject] = useState(false);
-  const [isNonStudent, setIsNonStudent] = useState(false);
+  const [editedProjectsBuilt, setEditedProjectsBuilt] = useState(
+    course.projectsBuilt || 0
+  );
+  const [editedAttendance, setEditedAttendance] = useState(
+    course.attendance || 0
+  );
+  const [editedStudyHours, setEditedStudyHours] = useState(
+    course.studyHours || 0
+  );
+
+  const handleDelete = async () => {
+    try {
+      const {
+        data: { token },
+      } = await axios.get("/api/getToken");
+
+      await axios.delete("http://localhost:5000/api/users/delete-subject", {
+        headers: { Authorization: `Bearer ${token}` },
+        data: { courseCode: course.code },
+      });
+
+      alert("Course deleted successfully!");
+      onDelete(course.code); // Call the onDelete callback to update the parent state
+    } catch (error) {
+      console.error("Error deleting course:", error);
+      alert("Failed to delete the course.");
+    }
+  };
 
   const handleSave = async () => {
     const updates = {
-      title: course.title,
-      previousMarks,
-      updatedMarks,
-      codingContestsAttempted,
-      projectsBuilt,
-      attendance,
-      studyHours,
+      previousMarks: editedPreviousMarks,
+      updatedMarks: editedUpdatedMarks,
+      codingContestsAttempted: editedCodingContests,
+      projectsBuilt: editedProjectsBuilt,
+      attendance: editedAttendance,
+      studyHours: editedStudyHours,
     };
 
     onUpdateMarks(course.code, updates);
     setIsEditing(false);
-
     try {
       const {
         data: { token },
@@ -91,23 +128,25 @@ const Card = ({
     }
   };
 
-  useEffect(() => {
-    if (updatedMarks == 0) {
-      setIsHidden(true);
-    } else {
-      setIsHidden(false);
-    }
-  }, [updatedMarks]);
+  const handleCancel = () => {
+    setEditedPreviousMarks(course.previousMarks);
+    setEditedUpdatedMarks(course.updatedMarks);
+    setEditedCodingContests(course.codingContestsAttempted || 0);
+    setEditedProjectsBuilt(course.projectsBuilt || 0);
+    setEditedAttendance(course.attendance || 0);
+    setEditedStudyHours(course.studyHours || 0);
+    setIsEditing(false);
+  };
 
   // Calculate change and determine trend
-  const marksDifference = updatedMarks - previousMarks;
+  const marksDifference = editedUpdatedMarks - editedPreviousMarks;
   const percentChange =
-    previousMarks > 0 ? (marksDifference / previousMarks) * 100 : 0;
+    editedPreviousMarks > 0 ? (marksDifference / editedPreviousMarks) * 100 : 0;
   const trend =
     marksDifference > 0 ? "up" : marksDifference < 0 ? "down" : "neutral";
 
   // Calculate completion percentage
-  const completionPercentage = (updatedMarks / course.totalMarks) * 100;
+  const completionPercentage = (editedUpdatedMarks / course.totalMarks) * 100;
 
   return (
     <motion.div
@@ -128,7 +167,7 @@ const Card = ({
       />
 
       <div className="p-4">
-        {/* Header with course code and edit button */}
+        {/* Header with course code, edit button, and delete button */}
         {type ? (
           <div className="flex justify-between items-center mb-2">
             <div className="flex flex-col rounded-lg">
@@ -139,70 +178,53 @@ const Card = ({
                 semester : {course.semester}
               </span>
             </div>
-            {/* Conditionally render the button */}
-            {url !== "/dashboard" && (
+            <div className="flex items-center space-x-2">
+              {url !== "/dashboard" && (
+                <>
+                  {isEditing ? (
+                    <>
+                      <button
+                        onClick={handleSave}
+                        className="text-green-500 hover:text-green-700 p-1 rounded-full bg-gray-800/30 hover:bg-gray-800/50 transition-colors"
+                      >
+                        <Save size={16} />
+                      </button>
+                      <button
+                        onClick={handleCancel}
+                        className="text-gray-400 hover:text-gray-600 p-1 rounded-full bg-gray-800/30 hover:bg-gray-800/50 transition-colors"
+                      >
+                        Cancel
+                      </button>
+                    </>
+                  ) : (
+                    <button
+                      onClick={() => setIsEditing(true)}
+                      className="text-gray-400 hover:text-primary p-1 rounded-full bg-gray-800/30 hover:bg-gray-800/50 transition-colors"
+                    >
+                      <Edit2 size={16} />
+                    </button>
+                  )}
+                </>
+              )}
               <button
-                onClick={() => {
-                  if (isEditing) handleSave();
-                  setIsEditing(!isEditing);
-                }}
-                className={`text-gray-400 hover:text-primary p-1 rounded-full bg-gray-800/30 hover:bg-gray-800/50 transition-colors ${
-                  isEditing
-                    ? "bg-sky-500 text-white scale-105 hover:bg-sky-500/80"
-                    : ""
-                }`}
+                onClick={handleDelete}
+                className="text-red-500 hover:text-red-700 p-1 rounded-full bg-gray-800/30 hover:bg-gray-800/50 transition-colors"
               >
-                {isEditing ? <Save size={16} /> : <Edit2 size={16} />}
+                <Trash2 size={16} />
               </button>
-            )}
+            </div>
           </div>
         ) : null}
 
         {/* Course title */}
         <Link href={link} className="block">
-          <h3 className="text-gray-100 font-semibold text-base mb-3 line-clamp-1 hover:underline">
-            {course.title}
-          </h3>
+            <h3 className="text-gray-100 font-semibold text-base mb-3 line-clamp-1 hover:underline">
+              {course.title}
+            </h3>
         </Link>
 
         {type ? (
           <>
-            {/* Comparative progress visualization */}
-            <div className="mb-3">
-              <div className="relative h-7 bg-gray-800/50 rounded-md overflow-hidden">
-                {/* Previous marks indicator */}
-                <div
-                  className="absolute h-full w-0.5 bg-white/70 z-10"
-                  style={{
-                    left: `${(previousMarks / course.totalMarks) * 100}%`,
-                  }}
-                />
-
-                {/* Updated marks progress bar */}
-                <motion.div
-                  className={`absolute h-full ${
-                    trend === "up"
-                      ? "bg-green-500/70"
-                      : trend === "down"
-                      ? "bg-red-500/70"
-                      : "bg-blue-500/70"
-                  }`}
-                  initial={{ width: 0 }}
-                  animate={{
-                    width: `${(updatedMarks / course.totalMarks) * 100}%`,
-                  }}
-                  transition={{ duration: 0.8 }}
-                />
-
-                {/* Percentage display */}
-                <div className="absolute inset-0 flex items-center justify-end pr-2">
-                  <span className="text-xs font-medium text-white z-10">
-                    {Math.round(completionPercentage)}%
-                  </span>
-                </div>
-              </div>
-            </div>
-
             {/* Marks comparison section */}
             <div className="grid grid-cols-2 gap-2 mb-3">
               {isEditing ? (
@@ -211,8 +233,10 @@ const Card = ({
                     <span className="text-xs text-gray-400">Previous</span>
                     <input
                       type="number"
-                      value={previousMarks}
-                      onChange={(e) => setPreviousMarks(Number(e.target.value))}
+                      value={editedPreviousMarks}
+                      onChange={(e) =>
+                        setEditedPreviousMarks(Number(e.target.value))
+                      }
                       className="w-full px-2 py-1 text-sm rounded-md text-black mt-1"
                       min={0}
                       max={100}
@@ -222,8 +246,10 @@ const Card = ({
                     <span className="text-xs text-gray-400">Updated</span>
                     <input
                       type="number"
-                      value={updatedMarks}
-                      onChange={(e) => setUpdatedMarks(Number(e.target.value))}
+                      value={editedUpdatedMarks}
+                      onChange={(e) =>
+                        setEditedUpdatedMarks(Number(e.target.value))
+                      }
                       className="w-full px-2 py-1 text-sm rounded-md text-black mt-1"
                       min={0}
                       max={100}
@@ -235,158 +261,158 @@ const Card = ({
                   <div className="flex flex-col">
                     <span className="text-xs text-gray-400">Previous</span>
                     <span className="text-sm font-medium text-gray-200">
-                      {previousMarks}/{course.totalMarks}
+                      {course.previousMarks}/{course.totalMarks}
                     </span>
                   </div>
                   <div className="flex flex-col">
                     <span className="text-xs text-gray-400">Updated</span>
                     <span className="text-sm font-medium text-gray-200">
-                      {updatedMarks}/{course.totalMarks}
+                      {course.updatedMarks}/{course.totalMarks}
                     </span>
                   </div>
                 </>
               )}
             </div>
 
-            {/* Extra fields for type === true */}
-            <div className="grid grid-cols-2 gap-2 mb-3">
-              {isEditing ? (
-                <>
-                  <div className="flex flex-col">
-                    <span className="text-xs text-gray-400">
-                      Coding Contests
-                    </span>
-                    <input
-                      type="number"
-                      value={codingContestsAttempted}
-                      onChange={(e) =>
-                        setCodingContestsAttempted(Number(e.target.value))
-                      }
-                      className="w-full px-2 py-1 text-sm rounded-md text-black mt-1"
-                      min={0}
-                      max={100}
-                    />
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-xs text-gray-400">
-                      Projects Built
-                    </span>
-                    <input
-                      type="number"
-                      value={projectsBuilt}
-                      onChange={(e) => setProjectsBuilt(Number(e.target.value))}
-                      className="w-full px-2 py-1 text-sm rounded-md text-black mt-1"
-                      min={0}
-                      max={100}
-                    />
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div className="flex flex-col">
-                    <span className="text-xs text-gray-400">
-                      Coding Contests
-                    </span>
-                    <span className="text-sm font-medium text-gray-200">
-                      {codingContestsAttempted}
-                    </span>
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-xs text-gray-400">
-                      Projects Built
-                    </span>
-                    <span className="text-sm font-medium text-gray-200">
-                      {projectsBuilt}
-                    </span>
-                  </div>
-                </>
-              )}
-            </div>
-
-            {/* Trend indicator */}
-            <div
-              className={`flex items-center justify-between bg-gray-800/40 rounded-md p-2 ${
-                isHidden ? "invisible" : ""
-              }`}
-            >
-              <div className="flex items-center">
-                {trend === "up" ? (
-                  <TrendingUp size={16} className="text-green-400 mr-1" />
-                ) : trend === "down" ? (
-                  <TrendingDown size={16} className="text-red-400 mr-1" />
-                ) : (
-                  <Minus size={16} className="text-gray-400 mr-1" />
-                )}
-                <span className="text-xs font-medium">
-                  {trend === "neutral"
-                    ? "No change"
-                    : `${Math.abs(marksDifference).toFixed(1)} points ${
-                        trend === "up" ? "increase" : "decrease"
-                      }`}
-                </span>
-              </div>
-              <span
-                className={`text-xs font-medium ${
-                  trend === "up"
-                    ? "text-green-400"
-                    : trend === "down"
-                    ? "text-red-400"
-                    : "text-gray-400"
-                }`}
-              >
-                {trend !== "neutral" &&
-                  `${Math.abs(percentChange).toFixed(1)}%`}
-              </span>
-            </div>
-          </>
-        ) : (
-          <>
-            {/* Extra fields for type === false */}
-            <div className="grid grid-cols-2 gap-2 mb-3">
-              {isEditing ? (
-                <>
-                  <div className="flex flex-col">
-                    <span className="text-xs text-gray-400">Attendance</span>
-                    <input
-                      type="number"
-                      value={attendance}
-                      onChange={(e) => setAttendance(Number(e.target.value))}
+            {/* Conditional rendering based on isCodingSubject */}
+            {isCodingSubject ? (
+              <div className="grid grid-cols-2 gap-2 mb-3">
+                {isEditing ? (
+                  <>
+                    <div className="flex flex-col">
+                      <span className="text-xs text-gray-400">
+                        Coding Contests
+                      </span>
+                      <input
+                        type="number"
+                        value={editedCodingContests}
+                        onChange={(e) =>
+                          setEditedCodingContests(Number(e.target.value))
+                        }
                         className="w-full px-2 py-1 text-sm rounded-md text-black mt-1"
                         min={0}
                         max={100}
-                    />
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-xs text-gray-400">Study Hours</span>
-                    <input
-                      type="number"
-                      value={studyHours}
-                      onChange={(e) => setStudyHours(Number(e.target.value))}
+                      />
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="text-xs text-gray-400">
+                        Projects Built
+                      </span>
+                      <input
+                        type="number"
+                        value={editedProjectsBuilt}
+                        onChange={(e) =>
+                          setEditedProjectsBuilt(Number(e.target.value))
+                        }
+                        className="w-full px-2 py-1 text-sm rounded-md text-black mt-1"
+                        min={0}
+                        max={100}
+                      />
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="flex flex-col">
+                      <span className="text-xs text-gray-400">
+                        Coding Contests
+                      </span>
+                      <span className="text-sm font-medium text-gray-200">
+                        {course.codingContestsAttempted}
+                      </span>
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="text-xs text-gray-400">
+                        Projects Built
+                      </span>
+                      <span className="text-sm font-medium text-gray-200">
+                        {course.projectsBuilt}
+                      </span>
+                    </div>
+                  </>
+                )}
+              </div>
+            ) : (
+              <div className="grid grid-cols-2 gap-2 mb-3">
+                {isEditing ? (
+                  <>
+                    <div className="flex flex-col">
+                      <span className="text-xs text-gray-400">Attendance</span>
+                      <input
+                        type="number"
+                        value={editedAttendance}
+                        onChange={(e) =>
+                          setEditedAttendance(Number(e.target.value))
+                        }
+                        className="w-full px-2 py-1 text-sm rounded-md text-black mt-1"
+                        min={0}
+                        max={100}
+                      />
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="text-xs text-gray-400">Study Hours</span>
+                      <input
+                        type="number"
+                        value={editedStudyHours}
+                        onChange={(e) =>
+                          setEditedStudyHours(Number(e.target.value))
+                        }
                         className="w-full px-2 py-1 text-sm rounded-md text-black mt-1"
                         min={0}
                         max={24}
-                    />
-                  </div>
-                </>
-              ) : (
-                <>
-                  <div className="flex flex-col">
-                    <span className="text-xs text-gray-400">Attendance</span>
-                    <span className="text-sm font-medium text-gray-200">
-                      {attendance}
-                    </span>
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-xs text-gray-400">Study Hours</span>
-                    <span className="text-sm font-medium text-gray-200">
-                      {studyHours}
-                    </span>
-                  </div>
-                </>
-              )}
-            </div>
+                      />
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="flex flex-col">
+                      <span className="text-xs text-gray-400">Attendance</span>
+                      <span className="text-sm font-medium text-gray-200">
+                        {course.attendance}
+                      </span>
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="text-xs text-gray-400">Study Hours</span>
+                      <span className="text-sm font-medium text-gray-200">
+                        {course.studyHours}
+                      </span>
+                    </div>
+                  </>
+                )}
+              </div>
+            )}
           </>
-        )}
+        ) : null}
+
+        {/* Trend indicator */}
+        <div className="flex items-center justify-between bg-gray-800/40 rounded-md p-2">
+          <div className="flex items-center">
+            {trend === "up" ? (
+              <TrendingUp size={16} className="text-green-400 mr-1" />
+            ) : trend === "down" ? (
+              <TrendingDown size={16} className="text-red-400 mr-1" />
+            ) : (
+              <Minus size={16} className="text-gray-400 mr-1" />
+            )}
+            <span className="text-xs font-medium">
+              {trend === "neutral"
+                ? "No change"
+                : `${Math.abs(marksDifference).toFixed(1)} points ${
+                    trend === "up" ? "increase" : "decrease"
+                  }`}
+            </span>
+          </div>
+          <span
+            className={`text-xs font-medium ${
+              trend === "up"
+                ? "text-green-400"
+                : trend === "down"
+                ? "text-red-400"
+                : "text-gray-400"
+            }`}
+          >
+            {trend !== "neutral" && `${Math.abs(percentChange).toFixed(1)}%`}
+          </span>
+        </div>
       </div>
     </motion.div>
   );
