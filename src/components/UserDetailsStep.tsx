@@ -93,7 +93,9 @@ export default function UserDetailsStep({ onSubmit }: UserDetailsStepProps) {
               type="number"
               value={yearsOfExperience ?? ""}
               onChange={(e) => setYearsOfExperience(Number(e.target.value))}
-              required
+                required
+                min={0}
+                max={60}
             />
           </div>
           <div className="space-y-2">
@@ -103,7 +105,9 @@ export default function UserDetailsStep({ onSubmit }: UserDetailsStepProps) {
               type="number"
               value={certifications ?? ""}
               onChange={(e) => setCertifications(Number(e.target.value))}
-              required
+                required
+                min={0}
+                max={200}
             />
           </div>
         </>

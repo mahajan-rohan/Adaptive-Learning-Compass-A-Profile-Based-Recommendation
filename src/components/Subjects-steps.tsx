@@ -169,6 +169,7 @@ export default function SubjectsStep({
                 })
               }
               required
+              min={0}
               max={100}
             />
           </div>
@@ -258,6 +259,8 @@ export default function SubjectsStep({
                       codingContestsAttempted: Number(e.target.value),
                     })
                   }
+                  min={0}
+                  max={200}
                 />
               </div>
               <div className="space-y-2">
@@ -272,6 +275,8 @@ export default function SubjectsStep({
                       projectsBuilt: Number(e.target.value),
                     })
                   }
+                  min={0}
+                  max={200}
                 />
               </div>
             </>
@@ -289,6 +294,8 @@ export default function SubjectsStep({
                       attendance: Number(e.target.value),
                     })
                   }
+                    min={0}
+                    max={100}
                 />
               </div>
               <div className="space-y-2">
@@ -303,6 +310,8 @@ export default function SubjectsStep({
                       studyHours: Number(e.target.value),
                     })
                   }
+                    min={0}
+                    max={24}
                 />
               </div>
             </>

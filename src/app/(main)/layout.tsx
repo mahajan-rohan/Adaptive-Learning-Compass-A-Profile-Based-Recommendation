@@ -65,7 +65,7 @@ export default function MainLayout({
     };
 
     checkUserData();
-  }, [showRegister, setShowRegister]);
+  }, [showRegister, setShowRegister, user]);
 
   return (
     <div className="min-h-screen layout-container text-foreground antialiased bg-gradient-to-b from-background via-background/90 to-background">
