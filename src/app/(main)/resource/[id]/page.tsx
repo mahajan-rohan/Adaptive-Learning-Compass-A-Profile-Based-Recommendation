@@ -92,11 +92,49 @@ export default function ResourcesPage({ params }: { params: Promise<Params> }) {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="animate-pulse text-center">
-          <div className="h-8 w-64 bg-gray-200 dark:bg-gray-700 rounded mb-4 mx-auto"></div>
-          <div className="h-4 w-48 bg-gray-200 dark:bg-gray-700 rounded mx-auto"></div>
-        </div>
+      <div className="flex h-full w-full items-center justify-center scale-75">
+        <svg
+          className="ip"
+          viewBox="0 0 256 128"
+          width="256px"
+          height="128px"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <linearGradient id="grad1" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="#5ebd3e" />
+              <stop offset="33%" stopColor="#ffb900" />
+              <stop offset="67%" stopColor="#f78200" />
+              <stop offset="100%" stopColor="#e23838" />
+            </linearGradient>
+            <linearGradient id="grad2" x1="1" y1="0" x2="0" y2="0">
+              <stop offset="0%" stopColor="#e23838" />
+              <stop offset="33%" stopColor="#973999" />
+              <stop offset="67%" stopColor="#009cdf" />
+              <stop offset="100%" stopColor="#5ebd3e" />
+            </linearGradient>
+          </defs>
+          <g fill="none" strokeLinecap="round" strokeWidth="16">
+            <g className="ip__track" stroke="#ddd">
+              <path d="M8,64s0-56,60-56,60,112,120,112,60-56,60-56" />
+              <path d="M248,64s0-56-60-56-60,112-120,112S8,64,8,64" />
+            </g>
+            <g strokeDasharray="180 656">
+              <path
+                className="ip__worm1"
+                stroke="url(#grad1)"
+                strokeDashoffset="0"
+                d="M8,64s0-56,60-56,60,112,120,112,60-56,60-56"
+              />
+              <path
+                className="ip__worm2"
+                stroke="url(#grad2)"
+                strokeDashoffset="358"
+                d="M248,64s0-56-60-56-60,112-120,112S8,64,8,64"
+              />
+            </g>
+          </g>
+        </svg>
       </div>
     );
   }
@@ -186,8 +224,8 @@ export default function ResourcesPage({ params }: { params: Promise<Params> }) {
   );
 
   return (
-    <div className="min-h-screen bg-white dark:bg-slate-950 p-4 md:p-8">
-      <div className="max-w-5xl mx-auto">
+    <div className="min-h-screen min-w-full bg-white dark:bg-slate-950 p-4 md:p-8">
+      <div className="mx-auto">
         <header className="mb-8">
           <h1 className="text-2xl md:text-3xl font-medium mb-2">
             {resourceData.subject} Resources
@@ -201,19 +239,21 @@ export default function ResourcesPage({ params }: { params: Promise<Params> }) {
           </div>
         </header>
 
-        {resourceData.errors && resourceData.errors.length > 0 && (
-          <div className="mb-6 p-4 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 rounded-md">
-            <h3 className="text-sm font-medium text-amber-800 dark:text-amber-400 flex items-center gap-2 mb-2">
-              <AlertCircleIcon className="h-4 w-4" />
-              Notices
-            </h3>
-            <ul className="text-xs text-amber-700 dark:text-amber-300 space-y-1 ml-6 list-disc">
-              {resourceData.errors.map((error, index) => (
-                <li key={index}>{error.error || error || "Error"}</li>
-              ))}
-            </ul>
-          </div>
-        )}
+        {resourceData.errors &&
+          resourceData.errors.length > 0 &&
+          !(resourceData.results.length > 0) && (
+            <div className="mb-6 p-4 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 rounded-md">
+              <h3 className="text-sm font-medium text-amber-800 dark:text-amber-400 flex items-center gap-2 mb-2">
+                <AlertCircleIcon className="h-4 w-4" />
+                Notices
+              </h3>
+              <ul className="text-xs text-amber-700 dark:text-amber-300 space-y-1 ml-6 list-disc">
+                {resourceData.errors.map((error, index) => (
+                  <li key={index}>{error.error || error || "Error"}</li>
+                ))}
+              </ul>
+            </div>
+          )}
 
         <div className="flex flex-col md:flex-row gap-4 mb-8">
           {/* Main filters */}
@@ -427,14 +467,13 @@ export default function ResourcesPage({ params }: { params: Promise<Params> }) {
   );
 }
 
-
 // Custom Udemy icon component
 function UdemyIcon({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor">
       <path d="M12 0L1.608 6v12L12 24l10.392-6V6L12 0zm-1.524 14.183c-.537.358-1.225.625-2.045.625-1.253 0-2.157-.508-2.157-1.875V7.167H7.488v5.625c0 .458.175.733.575.733.4 0 .825-.275 1.179-.733V7.167h1.233v7.016h-1.233l.234-.733zm5.149.733h-1.234v-.733c-.4.458-.825.733-1.233.733-.4 0-.575-.275-.575-.733V7.167h1.233v5.625c0 .458.175.733.575.733.4 0 .825-.275 1.234-.733V7.167h1.233v7.016h-1.233v-.733z" />
     </svg>
-  )
+  );
 }
 
 // Custom Coursera icon component
@@ -443,5 +482,5 @@ function CourseraIcon({ className }: { className?: string }) {
     <svg className={className} viewBox="0 0 24 24" fill="currentColor">
       <path d="M11.7 17.7l-2.1-2.1c-.6.4-1.5.7-2.4.7-2.2 0-4-1.8-4-4s1.8-4 4-4c.9 0 1.8.3 2.4.7l2.1-2.1C10.3 5.7 8.7 5 6.9 5 3.1 5 0 8.1 0 12s3.1 7 6.9 7c1.8 0 3.4-.7 4.8-1.3zm.3-5.7c0-1.4 1.1-2.5 2.5-2.5s2.5 1.1 2.5 2.5-1.1 2.5-2.5 2.5-2.5-1.1-2.5-2.5zm9.7 5.7l-2.1-2.1c.6-.4 1.5-.7 2.4-.7 2.2 0 4-1.8 4-4s-1.8-4-4-4c-.9 0-1.8.3-2.4.7l2.1-2.1c1.4-.6 3-.9 4.8-.9 3.8 0 6.9 3.1 6.9 7s-3.1 7-6.9 7c-1.8 0-3.4-.7-4.8-1.3z" />
     </svg>
-  )
+  );
 }
