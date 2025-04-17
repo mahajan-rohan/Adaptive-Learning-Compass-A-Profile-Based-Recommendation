@@ -41,22 +41,22 @@ export default function SubjectsStep({
     attendance: 0,
     studyHours: 0,
   });
+  const [isCodingSubject, setIsCodingSubject] = useState<boolean>(false);
 
   const addSubject = () => {
+    if (!newSubject.code?.trim() || !newSubject.title?.trim()) {
+      alert("Course code and title are required.");
+      return;
+    }
 
-      if (!newSubject.code?.trim() || !newSubject.title?.trim()) {
-        alert("Course code and title are required.");
-        return;
-      }
-
-      // Check for duplicate course codes
-      const isDuplicateCode = subjects.some(
-        (subject) => subject.code === newSubject.code
-      );
-      if (isDuplicateCode) {
-        alert(`Course with code "${newSubject.code}" already exists.`);
-        return;
-      }
+    // Check for duplicate course codes
+    const isDuplicateCode = subjects.some(
+      (subject) => subject.code === newSubject.code
+    );
+    if (isDuplicateCode) {
+      alert(`Course with code "${newSubject.code}" already exists.`);
+      return;
+    }
 
     if (newSubject.title?.trim()) {
       const newSubjectObj: Subject = {
@@ -258,12 +258,13 @@ export default function SubjectsStep({
               <Input
                 type="checkbox"
                 checked={newSubject.isCodingSubject}
-                onChange={(e) =>
+                onChange={(e) => {
                   setNewSubject({
                     ...newSubject,
                     isCodingSubject: e.target.checked,
-                  })
-                }
+                  });
+                  setIsCodingSubject((prev) => !prev);
+                }}
                 className="max-w-fit"
               />
               <span className="ml-2">Is Coding Subject</span>
@@ -355,6 +356,7 @@ export default function SubjectsStep({
             key={index}
             course={subject}
             onUpdateMarks={handleUpdateMarks}
+            isCodingSubject={subject.isCodingSubject}
             // className="shadow-black/40 shadow-lg hover:shadow-black/60"
           />
         ))}
