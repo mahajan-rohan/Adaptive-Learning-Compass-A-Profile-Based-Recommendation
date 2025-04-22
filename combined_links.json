@@ -1,132 +1,306 @@
 {
-    "subject": "Data Structures",
-    "level": "intermediate",
+    "subject": "python",
+    "level": "advanced",
     "results": [
         {
-            "title": "Data Structures Easy to Advanced Course - Full Tutorial from a Google Engineer - YouTube",
-            "link": "https://www.youtube.com/watch?v=RBSGKlAvoiM",
+            "title": "PLEASE Learn These 10 Advanced Python Features - YouTube",
+            "link": "https://www.youtube.com/watch?v=6ViGc5NgdSw&pp=0gcJCdgAo7VqN5tD",
             "tags": "YouTube Link"
         },
         {
-            "title": "Algorithms and Data Structures Tutorial - Full Course for Beginners - YouTube",
-            "link": "https://www.youtube.com/watch?v=8hly31xKli0",
+            "title": "Python Advance Programming 2022 | Advanced Python | Advanced Python Tutorial | Simplilearn - YouTube",
+            "link": "https://www.youtube.com/watch?v=Yrtm7d3TJbs&pp=0gcJCdgAo7VqN5tD",
             "tags": "YouTube Link"
         },
         {
-            "title": "Introduction to Data Structures & Algorithms - YouTube",
-            "link": "https://www.youtube.com/watch?v=5_5oE5lgrhw",
+            "title": "9 HOURS of Python Projects - From Beginner to Advanced - YouTube",
+            "link": "https://www.youtube.com/watch?v=NpmFbWO6HPU",
             "tags": "YouTube Link"
         },
         {
-            "title": "DECAP770_ADVANCED_DATA_STRUCTURES.pdf",
-            "link": "https://www.lpude.in/SLMs/Master%20of%20Computer%20Applications/Sem_2/DECAP770_ADVANCED_DATA_STRUCTURES.pdf",
+            "title": "Advanced_Programming_with_Python.pdf",
+            "link": "https://indico.cern.ch/event/884989/contributions/3732167/attachments/1991200/3331806/Advanced_Programming_with_Python.pdf",
             "tags": "PDF Link"
         },
         {
-            "title": "Advanced-Data-Structures.pdf",
-            "link": "https://prajyotiniketan.edu.in/uchophee/2021/06/Advanced-Data-Structures.pdf",
+            "title": "Learning_Python.pdf",
+            "link": "https://cfm.ehu.es/ricardo/docs/python/Learning_Python.pdf",
             "tags": "PDF Link"
         },
         {
-            "title": "280_DS%20Complete.pdf",
-            "link": "https://www.cet.edu.in/noticefiles/280_DS%20Complete.pdf",
+            "title": "Advanced_Python_Programming_2023-1-19-17-41-34.pdf",
+            "link": "https://nitw.ac.in/api/static/files/Advanced_Python_Programming_2023-1-19-17-41-34.pdf",
             "tags": "PDF Link"
         }
     ],
-    "udemy_courses": [],
+    "udemy_courses": [
+        {
+            "title": "Web Programming with Python",
+            "link": "https://www.udemy.com/web-programming-with-python/"
+        },
+        {
+            "title": "Python Web Programming",
+            "link": "https://www.udemy.com/python-web-programming/"
+        },
+        {
+            "title": "Complete Python Web Course: Build 8 Python Web Apps",
+            "link": "https://www.udemy.com/the-complete-python-web-course-learn-by-building-8-apps/"
+        },
+        {
+            "title": "Introduction to QGIS Python Programming",
+            "link": "https://www.udemy.com/introduction-to-qgis-python-programming/"
+        },
+        {
+            "title": "Projects in Django and Python",
+            "link": "https://www.udemy.com/projects-in-django-and-python/"
+        },
+        {
+            "title": "Python Programming: Create an Digital Marketplace in Django",
+            "link": "https://www.udemy.com/coding-for-entrepreneurs-marketplace-daily-deals/"
+        },
+        {
+            "title": "Professional Python Web Development Using Flask",
+            "link": "https://www.udemy.com/python-flask-course/"
+        },
+        {
+            "title": "Learn Python Django - A Hands-On Course",
+            "link": "https://www.udemy.com/learn-python-django-a-hands-on-course/"
+        }
+    ],
     "coursera_courses": [
         {
-            "title": "Python Data Structures",
-            "link": "https://www.coursera.org/learn/python-data"
+            "title": "Python Data Analysis",
+            "link": "https://www.coursera.org/learn/python-analysis"
         },
         {
-            "title": "Advanced Data Structures in Java",
-            "link": "https://www.coursera.org/learn/Advanced-data-structures"
+            "title": "Introduction to Data Science in Python",
+            "link": "https://www.coursera.org/learn/python-data-analysis"
         },
         {
-            "title": "Ordered Data Structures",
-            "link": "https://www.coursera.org/learn/cs-fundamentals-2"
+            "title": "Python Data Visualization",
+            "link": "https://www.coursera.org/learn/python-visualization"
+        },
+        {
+            "title": "Data Processing Using Python",
+            "link": "https://www.coursera.org/learn/python-data-processing"
+        },
+        {
+            "title": "Accounting Data Analytics with Python",
+            "link": "https://www.coursera.org/learn/accounting-data-analytics-python"
+        },
+        {
+            "title": "Machine Learning for Accounting with Python",
+            "link": "https://www.coursera.org/learn/machine-learning-accounting-python"
+        },
+        {
+            "title": "Python for Genomic Data Science",
+            "link": "https://www.coursera.org/learn/python-genomics"
+        },
+        {
+            "title": "Python and Statistics for Financial Analysis",
+            "link": "https://www.coursera.org/learn/python-statistics-financial-analysis"
+        },
+        {
+            "title": "Python Data Representations",
+            "link": "https://www.coursera.org/learn/python-representation"
+        },
+        {
+            "title": "Applied Machine Learning in Python",
+            "link": "https://www.coursera.org/learn/python-machine-learning"
+        },
+        {
+            "title": "Statistical Data Visualization in Python",
+            "link": "https://www.coursera.org/learn/statistical-visualization"
+        },
+        {
+            "title": "Understanding and Visualizing Data with Python",
+            "link": "https://www.coursera.org/learn/understanding-visualization-data"
+        },
+        {
+            "title": "Python Programming: A Concise Introduction",
+            "link": "https://www.coursera.org/learn/python-programming-introduction"
+        },
+        {
+            "title": "Python and Machine Learning for Asset Management",
+            "link": "https://www.coursera.org/learn/python-machine-learning-for-investment-management"
+        },
+        {
+            "title": "An Introduction to Interactive Programming in Python (Part 1)",
+            "link": "https://www.coursera.org/learn/interactive-python-1"
+        },
+        {
+            "title": "An Introduction to Interactive Programming in Python (Part 2)",
+            "link": "https://www.coursera.org/learn/interactive-python-2"
+        },
+        {
+            "title": "Applied Social Network Analysis in Python",
+            "link": "https://www.coursera.org/learn/python-social-network-analysis"
+        },
+        {
+            "title": "Building Modern Python Applications on AWS",
+            "link": "https://www.coursera.org/learn/building-modern-python-applications-on-aws"
+        },
+        {
+            "title": "Introduction to Portfolio Construction and Analysis with Python",
+            "link": "https://www.coursera.org/learn/introduction-portfolio-construction-python"
+        },
+        {
+            "title": "Applied Text Mining in Python",
+            "link": "https://www.coursera.org/learn/python-text-mining"
+        },
+        {
+            "title": "Advanced Portfolio Construction and Analysis with Python",
+            "link": "https://www.coursera.org/learn/Advanced-portfolio-construction-python"
+        },
+        {
+            "title": "Using Python to Interact with the Operating System",
+            "link": "https://www.coursera.org/learn/python-operating-system"
+        },
+        {
+            "title": "Problem Solving, Python Programming, and Video Games",
+            "link": "https://www.coursera.org/learn/problem-solving-programming-video-games"
+        },
+        {
+            "title": "Python Tricks and Hacks for Productivity",
+            "link": "https://www.coursera.org/learn/python-hacks"
+        },
+        {
+            "title": "Automating Real-World Tasks with Python",
+            "link": "https://www.coursera.org/learn/automating-real-world-tasks-python"
+        },
+        {
+            "title": "Using SAS Viya REST APIs with Python and R",
+            "link": "https://www.coursera.org/learn/sas-viya-rest-api-python-r"
+        },
+        {
+            "title": "Applied Plotting, Charting & Data Representation in Python",
+            "link": "https://www.coursera.org/learn/python-plotting"
+        },
+        {
+            "title": "Python and Machine-Learning for Asset Management with Alternative Data Sets",
+            "link": "https://www.coursera.org/learn/machine-learning-asset-management-alternative-data"
+        },
+        {
+            "title": "Reverse and complement nucleic acid sequences (DNA, RNA) using Python",
+            "link": "https://www.coursera.org/learn/reverse-and-complement-nucleic-acid-sequences-using-python"
+        },
+        {
+            "title": "Design Computing: 3D Modeling in Rhinoceros with Python/Rhinoscript",
+            "link": "https://www.coursera.org/learn/3d-modeling-rhinoscript"
         }
     ],
-    "errors": [
-        {
-            "error": "No courses found for the subject: Data Structures"
-        },
-        {
-            "error": "No courses found for the level: intermediate"
-        }
-    ],
+    "errors": [],
     "links": [
         {
-            "link": "https://www.geeksforgeeks.org/quizzes/top-50-data-structures-mcqs-with-answers/",
+            "link": "https://www.geeksforgeeks.org/advanced-python-tutorials/",
             "website": "Geeksforgeeks"
         },
         {
-            "link": "https://www.tpointtech.com/data-structure-algorithm",
+            "link": "https://www.geeksforgeeks.org/top-10-advance-python-concepts-that-you-must-know/",
+            "website": "Geeksforgeeks"
+        },
+        {
+            "link": "https://www.geeksforgeeks.org/python-programming-language/?ref=gcse",
+            "website": "Geeksforgeeks"
+        },
+        {
+            "link": "https://www.geeksforgeeks.org/python-projects-beginner-to-advanced/",
+            "website": "Geeksforgeeks"
+        },
+        {
+            "link": "https://www.geeksforgeeks.org/python-exercises-practice-questions-and-solutions/",
+            "website": "Geeksforgeeks"
+        },
+        {
+            "link": "https://www.geeksforgeeks.org/advanced-python-list-methods-and-techniques/",
+            "website": "Geeksforgeeks"
+        },
+        {
+            "link": "https://www.geeksforgeeks.org/python-programming-language-tutorial/",
+            "website": "Geeksforgeeks"
+        },
+        {
+            "link": "https://www.geeksforgeeks.org/top-10-python-books-for-beginners-and-advanced-programmers/",
+            "website": "Geeksforgeeks"
+        },
+        {
+            "link": "https://www.geeksforgeeks.org/python-programming-examples/?ref=shm",
+            "website": "Geeksforgeeks"
+        },
+        {
+            "link": "https://www.geeksforgeeks.org/advance-features-of-python/",
+            "website": "Geeksforgeeks"
+        },
+        {
+            "link": "https://www.tpointtech.com/advance-concepts-of-python-for-python-developer",
             "website": "Tpointtech"
         },
         {
-            "link": "https://www.tpointtech.com/application-of-data-structure",
+            "link": "https://www.tpointtech.com/python-tutorial",
             "website": "Tpointtech"
         },
         {
-            "link": "https://www.tpointtech.com/data-structures-and-algorithms-in-python",
+            "link": "https://www.tpointtech.com/advanced-usage-of-python",
             "website": "Tpointtech"
         },
         {
-            "link": "https://www.tpointtech.com/best-books-for-data-structures-and-algorithms",
+            "link": "https://www.tpointtech.com/emerging-advance-python-projects-2022",
             "website": "Tpointtech"
         },
         {
-            "link": "https://www.tpointtech.com/best-data-structure-and-algorithm-course-for-python",
+            "link": "https://www.tpointtech.com/python-projects-beginner-to-advanced",
             "website": "Tpointtech"
         },
         {
-            "link": "https://www.tpointtech.com/applications-of-stack-in-data-structure",
+            "link": "https://www.tpointtech.com/8-advanced-python-logging-features-that-you-shouldnt-miss",
             "website": "Tpointtech"
         },
         {
-            "link": "https://www.tpointtech.com/python-books-for-data-structures-and-algorithms",
+            "link": "https://www.tpointtech.com/advanced-data-structures-and-algorithms-in-python",
             "website": "Tpointtech"
         },
         {
-            "link": "https://www.tpointtech.com/data-structure-for-symbol-table",
+            "link": "https://www.tpointtech.com/python-applications",
             "website": "Tpointtech"
         },
         {
-            "link": "https://www.tpointtech.com/data-structures-and-algorithms-in-python-set-1",
+            "link": "https://www.tpointtech.com/python-features",
             "website": "Tpointtech"
         },
         {
-            "link": "https://www.tpointtech.com/user-defined-data-structures-in-python",
-            "website": "Tpointtech"
-        },
-        {
-            "link": "https://www.tutorialspoint.com/data_structures_algorithms/index.htm",
+            "link": "https://www.tutorialspoint.com/python/index.htm",
             "website": "Tutorialspoint"
         },
         {
-            "link": "https://www.tutorialspoint.com/dsa_using_java/index.htm",
+            "link": "https://market.tutorialspoint.com/course/advance-python/index.asp",
             "website": "Tutorialspoint"
         },
         {
-            "link": "https://www.tutorialspoint.com/c-intermediate-part-iii-abstract-data-structures-and-sorting-algorithms/index.asp",
+            "link": "https://www.tutorialspoint.com/python/python_projects_from_basic_to_advanced.htm",
             "website": "Tutorialspoint"
         },
         {
-            "link": "https://www.tutorialspoint.com/java_data_structures/index.htm",
+            "link": "https://www.tutorialspoint.com/python_data_structure/python_advanced_linked_list.htm",
             "website": "Tutorialspoint"
         },
         {
-            "link": "https://academy.tutorialspoint.com/course/introduction-to-data-structures-amp-algorithms/index.asp",
+            "link": "https://www.tutorialspoint.com/object_oriented_python/object_oriented_python_advanced_features.htm",
             "website": "Tutorialspoint"
         },
         {
-            "link": "https://academy.tutorialspoint.com/ebook/data-structures-and-algorithms-tutorial/index.asp",
+            "link": "https://www.tutorialspoint.com/python-for-beginners-to-advanced/index.asp",
             "website": "Tutorialspoint"
         },
         {
-            "link": "https://www.tutorialspoint.com/functional_programming_with_java/functional_programming_with_java_intermediate_methods.htm",
+            "link": "https://www.tutorialspoint.com/certification/python-advanced-certification/index.asp",
+            "website": "Tutorialspoint"
+        },
+        {
+            "link": "https://www.tutorialspoint.com/python-3-from-scratch-to-become-a-developer-in-demand/index.asp",
+            "website": "Tutorialspoint"
+        },
+        {
+            "link": "https://market.tutorialspoint.com/course/learn-python-basic-to-advance-in-easy-way-2022/index.asp",
             "website": "Tutorialspoint"
         }
     ]
