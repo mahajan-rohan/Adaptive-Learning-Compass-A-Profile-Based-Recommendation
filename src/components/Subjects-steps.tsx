@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Card from "./Card";
-import { Course } from "@/types/Course";
+import { Course } from "@/Context/context";
 
 export interface Subject extends Course {}
 
@@ -33,13 +33,15 @@ export default function SubjectsStep({
     totalMarks: 100,
     previousMarks: 0,
     updatedMarks: 0,
-    semester: 1,
+    semester: "1",
     isCodingSubject: false,
     isNonStudent: false,
     codingContestsAttempted: 0,
     projectsBuilt: 0,
     attendance: 0,
     studyHours: 0,
+    yearsOfExperience: 0,
+    certifications: 0,
   });
   const [isCodingSubject, setIsCodingSubject] = useState<boolean>(false);
 
@@ -67,13 +69,15 @@ export default function SubjectsStep({
         totalMarks: newSubject.totalMarks ?? 100,
         previousMarks: newSubject.previousMarks ?? 0,
         updatedMarks: newSubject.updatedMarks ?? 0,
-        semester: newSubject.semester ?? 1,
+        semester: newSubject.semester ?? "1",
         isCodingSubject: newSubject.isCodingSubject,
         isNonStudent: newSubject.isNonStudent,
         codingContestsAttempted: newSubject.codingContestsAttempted ?? 0,
         projectsBuilt: newSubject.projectsBuilt ?? 0,
         attendance: newSubject.attendance ?? 0,
         studyHours: newSubject.studyHours ?? 0,
+        yearsOfExperience: newSubject.yearsOfExperience ?? 0,
+        certifications: newSubject.certifications ?? 0,
       };
       onSubjectsChange([...subjects, newSubjectObj]);
       setNewSubject({
@@ -84,13 +88,15 @@ export default function SubjectsStep({
         totalMarks: 100,
         previousMarks: 0,
         updatedMarks: 0,
-        semester: 1,
+        semester: "1",
         isCodingSubject: false,
         isNonStudent: false,
         codingContestsAttempted: 0,
         projectsBuilt: 0,
         attendance: 0,
         studyHours: 0,
+        yearsOfExperience: 0,
+        certifications: 0,
       });
     }
   };
@@ -153,7 +159,7 @@ export default function SubjectsStep({
           <option value="purple">Purple</option>
         </select>
       </div>
-      {type && (
+      {type ? (
         <>
           {/* <div className="space-y-2">
             <Label htmlFor="marksObtained">Marks Obtained</Label>
@@ -223,7 +229,7 @@ export default function SubjectsStep({
                 onChange={(e) =>
                   setNewSubject({
                     ...newSubject,
-                    semester: Number(e.target.value),
+                    semester: e.target.value,
                   })
                 }
                 className="w-full p-2 border rounded-md bg-background border-gray-100/10 border-1"
@@ -344,6 +350,43 @@ export default function SubjectsStep({
             </>
           )}
         </>
+      ) : (
+        <>
+          <div className="space-y-2">
+            <Label htmlFor="yearsOfExperience">Years of Experience</Label>
+            <Input
+              type="number"
+              id="yearsOfExperience"
+              value={newSubject.yearsOfExperience}
+              onChange={(e) =>
+                setNewSubject({
+                  ...newSubject,
+                  yearsOfExperience: Number(e.target.value),
+                })
+              }
+              required
+              min={0}
+              max={100}
+            />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="certifications">Certifications</Label>
+            <Input
+              type="number"
+              id="certifications"
+              value={newSubject.certifications}
+              onChange={(e) =>
+                setNewSubject({
+                  ...newSubject,
+                  certifications: Number(e.target.value),
+                })
+              }
+              required
+              min={0}
+              max={100}
+            />
+          </div>
+        </>
       )}
       <div className="flex space-x-2">
         <Button type="button" onClick={addSubject}>
@@ -357,6 +400,7 @@ export default function SubjectsStep({
             course={subject}
             onUpdateMarks={handleUpdateMarks}
             isCodingSubject={subject.isCodingSubject}
+            type={type}
             // className="shadow-black/40 shadow-lg hover:shadow-black/60"
           />
         ))}
