@@ -7,7 +7,6 @@ import UserDetailsStep from "@/components/UserDetailsStep";
 import SubjectsStep from "@/components/Subjects-steps";
 import type { Subject } from "@/components/Subjects-steps";
 import axios from "axios";
-import { Course } from "@/types/Course";
 import { useAppContext } from "@/Context/context";
 
 export default function RegisterPage() {
@@ -55,7 +54,7 @@ export default function RegisterPage() {
     nextStep();
   };
 
-  const handleSubjectsChange = (updatedSubjects: Course[]) => {
+  const handleSubjectsChange = (updatedSubjects: any) => {
     setSubjects(updatedSubjects);
   };
 
@@ -81,8 +80,6 @@ export default function RegisterPage() {
           semester,
           type,
           subjects,
-          yearsOfExperience,
-          certifications,
           email: user?.emailAddresses[0]?.emailAddress || "",
         },
         { headers: { Authorization: `Bearer ${token}` } }

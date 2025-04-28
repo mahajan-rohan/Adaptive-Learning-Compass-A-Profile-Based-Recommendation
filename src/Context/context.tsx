@@ -39,6 +39,8 @@ export interface Course {
   attendance?: number;
   projectsBuilt?: number;
   codingContestsAttempted?: number;
+  yearsOfExperience?: number;
+  certifications?: number;
 }
 
 interface FeedbackInfo {
