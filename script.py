@@ -1,222 +1,6 @@
-# ============================================ final working ========================================
-
-
 # For Student (Programming): python script.py 1 1 85 5 3 Python
 # For Student (Theoretical): python script.py 1 2 85 5 3 machine_learning
 # For Non-student: python script.py 2 8 3 java
-# import json
-# import requests
-# from bs4 import BeautifulSoup
-# from googlesearch import search
-# import pandas as pd
-# import pickle
-# import neattext.functions as nfx
-# from sklearn.feature_extraction.text import CountVectorizer
-# from sklearn.metrics.pairwise import cosine_similarity
-# import sys
-# import difflib
-
-# # ---------------- Argument Parsing ------------------
-# args = sys.argv[1:]
-
-# # Define category before validation
-# category = int(args[0])
-
-# # Correct validation logic
-# if (category == 1 and len(args) != 6) or (category == 2 and len(args) != 4):
-#     print("Invalid input. Please provide valid arguments.")
-#     exit()
-
-# subject_inp = args[-1]  # Last argument is the subject
-# values = list(map(float, args[2:5] if category == 1 else args[1:3]))
-
-
-# # ---------------- Student Classification ------------------
-# if category == 1:
-#     print("Category: Student")
-#     if args[1] == '1':  # Programming
-#         print("Type: Programming")
-#         if len(values) != 3:
-#             print("Invalid input for Student (Programming). Please provide exactly 3 values for marks, coding_contest, and projects.")
-#             exit()
-#         marks, coding_contest, projects = values
-#         model_filename = "stud_decision_model_programming.pkl"
-#         encoder_filename = "stud_decision_label_encoder_programming.pkl"
-#         input_features = pd.DataFrame([[marks, coding_contest, projects]], columns=["marks", "coding_contest", "projects"])
-
-#     elif args[1] == '2':  # Theoretical
-#         print("Type: Theoretical")
-#         if len(values) != 3:
-#             print("Invalid input for Student (Theoretical). Please provide exactly 3 values for marks, attendance, and study_hours.")
-#             exit()
-#         marks, attendance, study_hours = values
-#         model_filename = "stud_decision_model_theoretical.pkl"
-#         encoder_filename = "stud_decision_label_encoder_theoretical.pkl"
-#         input_features = pd.DataFrame([[marks, attendance, study_hours]], columns=["marks", "attendance", "study_hours"])
-#     else:
-#         print("Invalid input for Student. Second argument must be 1 (Programming) or 2 (Theoretical).")
-#         exit()
-
-#     with open(model_filename, "rb") as model_file:
-#         clf = pickle.load(model_file)
-#     with open(encoder_filename, "rb") as encoder_file:
-#         label_encoder = pickle.load(encoder_file)
-
-#     predicted_encoded = clf.predict(input_features)[0]
-#     predicted_category = label_encoder.inverse_transform([predicted_encoded])[0]
-
-#     print(f"\nPredicted Performance Category of student: {predicted_category}")
-#     print(f"Subject: {subject_inp}")
-
-# # ---------------- Non-Student Classification ------------------
-# elif category == 2:
-#     print("Category: Non-student")
-#     if len(values) != 2:
-#         print("Invalid input for Non-student. Please provide exactly two values: experience and certifications.")
-#         exit()
-
-#     experience, certifications = values
-
-#     with open("non_stud_decision_model.pkl", "rb") as model_file:
-#         model = pickle.load(model_file)
-#     with open("non_stud_decision_label_encoder.pkl", "rb") as encoder_file:
-#         label_encoder = pickle.load(encoder_file)
-
-#     input_features = pd.DataFrame([[experience, certifications]], columns=["experience", "certifications"])
-#     predicted_encoded = model.predict(input_features)[0]
-#     predicted_category = label_encoder.inverse_transform([predicted_encoded])[0]
-
-#     print(f"\nPredicted Category: {predicted_category}")
-#     print(f"Subject: {subject_inp}")
-
-# else:
-#     print("Invalid category. Use 1 for Student or 2 for Non-student.")
-#     exit()
-
-
-
-# df = pd.read_csv('UdemyCleanedTitle.csv')
-# df['Clean_title'] = df['course_title'].astype(str).apply(lambda x: nfx.remove_stopwords(x.lower().strip()))
-# df['Clean_title'] = df['Clean_title'].apply(nfx.remove_special_characters)
-
-# subject_input = "Web Development"
-# subject_filtered = df[df['subject'].str.contains(subject_input, case=False, na=False)]
-
-# # Error handling for subject filter
-# subject_error = []
-# if subject_filtered.empty:
-#     subject_error = [{"error": f"No courses found for the subject: {subject_input}"}]
-
-# level_input = predicted_category.strip().lower()
-
-# if level_input == "advance" or level_input == "advanced":
-#     level_filtered = subject_filtered.reset_index(drop=True)
-# else:
-#     level_filtered = subject_filtered[subject_filtered['level'].str.contains(level_input, case=False, na=False)].reset_index(drop=True)
-
-# # Error handling for level filter
-# level_error = []
-# if level_filtered.empty:
-#     level_error = [{"error": f"No courses found for the level: {level_input}"}]
-
-# countvect = CountVectorizer()
-# cv_mat = countvect.fit_transform(level_filtered['Clean_title'])
-# cosine_mat = cosine_similarity(cv_mat)
-
-# course_input = subject_inp.strip()
-# cleaned_input = nfx.remove_stopwords(course_input.lower().strip())
-# cleaned_input = nfx.remove_special_characters(cleaned_input)
-
-# course_index = pd.Series(level_filtered.index, index=level_filtered['Clean_title']).drop_duplicates()
-
-# cutoff_value = 0.5 if len(cleaned_input) >= 5 else 0.3
-# closest_matches = difflib.get_close_matches(cleaned_input, course_index.index, n=1, cutoff=cutoff_value)
-
-# matched_index = None
-# if closest_matches:
-#     matched_index = level_filtered[level_filtered['Clean_title'] == closest_matches[0]].index[0]
-# else:
-#     suggestions = level_filtered[level_filtered['Clean_title'].str.contains(cleaned_input, case=False, na=False)]
-#     if suggestions.empty:
-#         print("No course recommendations found for the entered keyword.")
-#         course_error = [{"error": f"No course recommendations found for keyword: {cleaned_input}"}]
-#     else:
-#         matched_index = suggestions.index[0]
-
-# # Generate recommendations only if matched_index is valid
-# if matched_index is not None and matched_index < cosine_mat.shape[0]:
-#     scores = list(enumerate(cosine_mat[matched_index]))
-#     sorted_scores = sorted(scores, key=lambda x: x[1], reverse=True)
-#     recommended_indices = [i[0] for i in sorted_scores if i[0] != matched_index][:15]
-#     recommended_scores = [i[1] for i in sorted_scores if i[0] != matched_index][:15]
-
-#     rec_df = level_filtered.iloc[recommended_indices].copy()
-#     rec_df['Similarity_Score'] = recommended_scores
-
-#     if rec_df.empty:
-#         course_error.append({"error": "No recommended courses found."})
-# else:
-#     print("No matched courses found. Unable to generate recommendations.")
-#     rec_df = pd.DataFrame()
-
-# def fetch_youtube_links(subject, level):
-#     youtube_data = []
-#     try:
-#         for url in search(f"{subject} {level} tutorial site:youtube.com"):
-#             if "youtube.com/watch" in url and len(youtube_data) < 3:
-#                 response = requests.get(url)
-#                 soup = BeautifulSoup(response.text, 'html.parser')
-#                 title = soup.title.string if soup.title else "Unknown Title"
-#                 youtube_data.append({"title": title, "link": url, "tags": "YouTube Link"})
-
-#         if not youtube_data:
-#             youtube_data = [{"error": "No YouTube links found."}]
-#     except Exception as e:
-#         youtube_data = [{"error": "YouTube link error", "details": str(e)}]
-#     return youtube_data
-
-# def fetch_pdf_links(subject, level):
-#     pdf_links = []
-#     try:
-#         for url in search(f"{subject} {level} filetype:pdf"):
-#             if url.endswith('.pdf'):
-#                 pdf_links.append({"title": url.split('/')[-1], "link": url, "tags": "PDF Link"})
-#                 if len(pdf_links) >= 3:
-#                     break
-#         if not pdf_links:
-#             pdf_links = [{"error": "No PDF links found."}]
-#     except Exception as e:
-#         pdf_links = [{"error": "PDF link error", "details": str(e)}]
-#     return pdf_links
-
-# youtube_links = fetch_youtube_links(subject_inp, level_input)
-# pdf_links = fetch_pdf_links(subject_inp, level_input)
-# # Error prevention for undefined variables
-# youtube_links = fetch_youtube_links(subject_inp, level_input) 
-# pdf_links = fetch_pdf_links(subject_inp, level_input) 
-
-# combined_data = {
-#     "subject": subject_inp,
-#     "level": level_input,
-#     "results": youtube_links + pdf_links,
-#     "udemy_courses": [
-#         {"title": row['course_title'], "link": row['url']} for _, row in rec_df[['course_title', 'url']].iterrows()
-#     ] if not rec_df.empty else [],
-#     "errors": subject_error + level_error
-# }
-
-# if __name__ == "__main__":
-#     # Set the default encoding to UTF-8
-#     sys.stdout.reconfigure(encoding='utf-8')
-#     with open("combined_links.json", "w") as file:
-#         json.dump(combined_data, file, indent=4)
-
-#     print("✅ Combined links saved to 'combined_links.json'")
-# ============================================ final working v1 ========================================
-
-
-
-# ============================================ new final working v2 ========================================
 
 # import json
 # import requests
@@ -307,7 +91,6 @@
 # else:
 #     print("Invalid category. Use 1 for Student or 2 for Non-student.")
 
-# # ===================================== udemy course recommender ==========================================
 # import pandas as pd
 # import difflib
 # import neattext.functions as nfx
@@ -327,7 +110,6 @@
 
 # # Compute cosine similarity matrix
 # cosine_mat = cosine_similarity(tfidf_matrix)
-
 
 # # Preprocess input title
 # cleaned_input = nfx.remove_stopwords(subject_inp.lower().strip())
@@ -398,7 +180,6 @@
 #     subject_error = [{"error": f"No similar courses found for: {subject_inp}"}]
 
 
-# # ========================================= webscrapping ======================================================
 # def fetch_youtube_links(subject, level):
 #     youtube_data = []
 #     try:
@@ -435,6 +216,9 @@
 # youtube_links = fetch_youtube_links(subject_inp, level_input) 
 # pdf_links = fetch_pdf_links(subject_inp, level_input) 
 
+# # ========================= integrate here 
+
+
 # combined_data = {
 #     "subject": subject_inp,
 #     "level": level_input,
@@ -452,7 +236,16 @@
 
 
 
-#  =================================================  added coursera v3 working ===========================================
+
+
+
+# ======================================== integrated with cousera final working added KNN for student only  =======================================
+
+# pip install -r requirements.txt
+
+# For Student (Programming): python script2.py 1 1 85 5 3 Python
+# For Student (Theoretical): python script2.py 1 2 85 5 3 machine_learning
+# For Non-student: python script2.py 2 8 3 java
 
 import json
 import requests
@@ -488,9 +281,18 @@ if category == 1:
             print("Invalid input for Student (Programming). Please provide exactly 3 values for marks, coding_contest, and projects.")
             exit()
         marks, coding_contest, projects = values
-        model_filename = "stud_decision_model_programming.pkl"
-        encoder_filename = "stud_decision_label_encoder_programming.pkl"
-        input_features = pd.DataFrame([[marks, coding_contest, projects]], columns=["marks", "coding_contest", "projects"])
+
+        # 🔽 Integrated KNN model loading
+        with open('knn_model_practical.pkl', 'rb') as model_file:
+            knn = pickle.load(model_file)
+        with open('scaler_practical.pkl', 'rb') as scaler_file:
+            scaler = pickle.load(scaler_file)
+
+        # 🔽 KNN prediction
+        student_scaled = scaler.transform([[marks, coding_contest, projects]])
+        knn_prediction = knn.predict(student_scaled)[0]
+        level_input = knn_prediction.strip().lower()
+        print(f"\n[KNN] Student Practical Classification: {knn_prediction}")
 
     elif args[1] == '2':  # Theoretical
         print("Type: Theoretical")
@@ -498,24 +300,21 @@ if category == 1:
             print("Invalid input for Student (Theoretical). Please provide exactly 3 values for marks, attendance, and study_hours.")
             exit()
         marks, attendance, study_hours = values
-        model_filename = "stud_decision_model_theoretical.pkl"
-        encoder_filename = "stud_decision_label_encoder_theoretical.pkl"
-        input_features = pd.DataFrame([[marks, attendance, study_hours]], columns=["marks", "attendance", "study_hours"])
+        # ✅ Load the trained model and scaler
+        with open('knn_model_theoretical.pkl', 'rb') as model_file:
+            knn = pickle.load(model_file)
+
+        with open('scaler_theoretical.pkl', 'rb') as scaler_file:
+            scaler = pickle.load(scaler_file)
+
+        student_scaled = scaler.transform([[marks, attendance, study_hours]])
+        knn_prediction = knn.predict(student_scaled)[0]
+        level_input = knn_prediction.strip().lower()
+        print(f"\n[KNN] Student Practical Classification: {knn_prediction}")
+        
     else:
         print("Invalid input for Student. Second argument must be 1 (Programming) or 2 (Theoretical).")
         exit()
-
-    with open(model_filename, "rb") as model_file:
-        clf = pickle.load(model_file)
-    with open(encoder_filename, "rb") as encoder_file:
-        label_encoder = pickle.load(encoder_file)
-
-    predicted_encoded = clf.predict(input_features)[0]
-    predicted_category = label_encoder.inverse_transform([predicted_encoded])[0]
-    level_input = predicted_category.strip().lower()
-
-    print(f"\nPredicted Performance Category of student: {predicted_category}")
-    print(f"Subject: {subject_inp}")
 
 # ---------------- Non-Student Classification ------------------
 elif category == 2:
@@ -525,23 +324,23 @@ elif category == 2:
 
     experience, certifications = values
 
-    with open("non_stud_decision_model.pkl", "rb") as model_file:
-        model = pickle.load(model_file)
-    with open("non_stud_decision_label_encoder.pkl", "rb") as encoder_file:
-        label_encoder = pickle.load(encoder_file)
+    with open('knn_model_non_stud.pkl', 'rb') as model_file:
+        knn = pickle.load(model_file)
 
-    input_features = pd.DataFrame([[experience, certifications]], columns=["experience", "certifications"])
-    predicted_encoded = model.predict(input_features)[0]
-    predicted_category = label_encoder.inverse_transform([predicted_encoded])[0]
-    level_input = predicted_category.strip().lower()
+    with open('scaler_non_stud.pkl', 'rb') as scaler_file:
+        scaler = pickle.load(scaler_file)
 
-    print(f"\nPredicted Category: {predicted_category}")
+    input_scaled = scaler.transform([[certifications, experience]])
+    prediction_non_stud = knn.predict(input_scaled)
+    level_input = prediction_non_stud[0].strip().lower()
+
+    print(f"\nPredicted Category: {level_input}")
     print(f"Subject: {subject_inp}")
 
 else:
     print("Invalid category. Use 1 for Student or 2 for Non-student.")
 
-# ====================== Udemy course recomender =======================================
+# # ====================== Udemy course recomender =======================================
 df = pd.read_csv('UdemyCleanedTitle.csv')
 
 df['Clean_title'] = df['course_title'].astype(str).apply(lambda x: nfx.remove_stopwords(x.lower().strip()))
@@ -618,6 +417,7 @@ if level_filtered.empty:
 if level_filtered.empty and not subject_error:
     subject_error = [{"error": f"No similar courses found for: {subject_inp}"}]
 
+# =============================== web scrapping ================================
 def fetch_youtube_links(subject, level):
     youtube_data = []
     try:
@@ -655,9 +455,9 @@ youtube_links = fetch_youtube_links(subject_inp, level_input)
 pdf_links = fetch_pdf_links(subject_inp, level_input) 
 
 # =================================================== cousera recommender ============================================
-
-# subject_inp = "machine learning"  # Example input
-# level_input = "intermediate"  # Example input
+# Example input
+# subject_inp = "machine learning"  
+# level_input = "intermediate" 
 
 cousera_df = pd.read_csv('Coursera_Cleaned_Updated.csv')
 

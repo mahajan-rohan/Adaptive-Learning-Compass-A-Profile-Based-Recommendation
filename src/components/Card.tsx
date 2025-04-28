@@ -28,8 +28,6 @@ interface CourseProps {
     projectsBuilt?: number;
     attendance?: number;
     studyHours?: number;
-    yearsOfExperience?: number;
-    certifications?: number;
   };
   onUpdateMarks: (
     courseCode: string,
@@ -62,10 +60,10 @@ const Card = ({
 
   // Local state variables for editing
   const [editedPreviousMarks, setEditedPreviousMarks] = useState(
-    course.previousMarks || 0
+    course.previousMarks
   );
   const [editedUpdatedMarks, setEditedUpdatedMarks] = useState(
-    course.updatedMarks || 0
+    course.updatedMarks
   );
   const [editedCodingContests, setEditedCodingContests] = useState(
     course.codingContestsAttempted || 0
@@ -78,12 +76,6 @@ const Card = ({
   );
   const [editedStudyHours, setEditedStudyHours] = useState(
     course.studyHours || 0
-  );
-  const [editedYearsOfExp, setEditedYearsOfExp] = useState(
-    course.yearsOfExperience || 0
-  );
-  const [editedNoOfCertifications, setEditedNoOfCertifications] = useState(
-    course.certifications || 0
   );
 
   const handleDelete = async () => {
@@ -113,8 +105,6 @@ const Card = ({
       projectsBuilt: editedProjectsBuilt,
       attendance: editedAttendance,
       studyHours: editedStudyHours,
-      yearOfExperience: editedYearsOfExp,
-      noOfCertifications: editedNoOfCertifications,
     };
 
     onUpdateMarks(course.code, updates);
@@ -145,8 +135,6 @@ const Card = ({
     setEditedProjectsBuilt(course.projectsBuilt || 0);
     setEditedAttendance(course.attendance || 0);
     setEditedStudyHours(course.studyHours || 0);
-    setEditedYearsOfExp(course.yearsOfExperience || 0);
-    setEditedNoOfCertifications(course.noOfCertifications || 0);
     setIsEditing(false);
   };
 
@@ -230,9 +218,9 @@ const Card = ({
 
         {/* Course title */}
         <Link href={link} className="block">
-          <h3 className="text-gray-100 font-semibold text-base mb-3 line-clamp-1 hover:underline">
-            {course.title}
-          </h3>
+            <h3 className="text-gray-100 font-semibold text-base mb-3 line-clamp-1 hover:underline">
+              {course.title}
+            </h3>
         </Link>
 
         {type ? (
@@ -393,92 +381,38 @@ const Card = ({
               </div>
             )}
           </>
-        ) : (
-          <div className="grid grid-cols-2 gap-2 mb-3">
-            {isEditing ? (
-              <>
-                <div className="flex flex-col">
-                  <span className="text-xs text-gray-400">
-                    Years of Experience
-                  </span>
-                  <input
-                    type="number"
-                    value={editedYearsOfExp}
-                    onChange={(e) =>
-                      setEditedYearsOfExp(Number(e.target.value))
-                    }
-                    className="w-full px-2 py-1 text-sm rounded-md text-black mt-1"
-                    min={0}
-                    max={100}
-                  />
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-xs text-gray-400">Certifications</span>
-                  <input
-                    type="number"
-                    value={editedNoOfCertifications}
-                    onChange={(e) =>
-                      setEditedNoOfCertifications(Number(e.target.value))
-                    }
-                    className="w-full px-2 py-1 text-sm rounded-md text-black mt-1"
-                    min={0}
-                    max={24}
-                  />
-                </div>
-              </>
-            ) : (
-              <>
-                <div className="flex flex-col">
-                  <span className="text-xs text-gray-400">
-                    Years of Experience
-                  </span>
-                  <span className="text-sm font-medium text-gray-200">
-                    {course.yearsOfExperience}
-                  </span>
-                </div>
-                <div className="flex flex-col">
-                  <span className="text-xs text-gray-400">Certifications</span>
-                  <span className="text-sm font-medium text-gray-200">
-                    {course.certifications}
-                  </span>
-                </div>
-              </>
-            )}
-          </div>
-        )}
+        ) : null}
 
         {/* Trend indicator */}
-        {type ? (
-          <div className="flex items-center justify-between bg-gray-800/40 rounded-md p-2">
-            <div className="flex items-center">
-              {trend === "up" ? (
-                <TrendingUp size={16} className="text-green-400 mr-1" />
-              ) : trend === "down" ? (
-                <TrendingDown size={16} className="text-red-400 mr-1" />
-              ) : (
-                <Minus size={16} className="text-gray-400 mr-1" />
-              )}
-              <span className="text-xs font-medium">
-                {trend === "neutral"
-                  ? "No change"
-                  : `${Math.abs(marksDifference).toFixed(1)} points ${
-                      trend === "up" ? "increase" : "decrease"
-                    }`}
-              </span>
-            </div>
-            <span
-              className={`text-xs font-medium ${
-                trend === "up"
-                  ? "text-green-400"
-                  : trend === "down"
-                  ? "text-red-400"
-                  : "text-gray-400"
-              }`}
-            >
-              {trend !== "neutral" && `${Math.abs(percentChange).toFixed(1)}%`}
+        <div className="flex items-center justify-between bg-gray-800/40 rounded-md p-2">
+          <div className="flex items-center">
+            {trend === "up" ? (
+              <TrendingUp size={16} className="text-green-400 mr-1" />
+            ) : trend === "down" ? (
+              <TrendingDown size={16} className="text-red-400 mr-1" />
+            ) : (
+              <Minus size={16} className="text-gray-400 mr-1" />
+            )}
+            <span className="text-xs font-medium">
+              {trend === "neutral"
+                ? "No change"
+                : `${Math.abs(marksDifference).toFixed(1)} points ${
+                    trend === "up" ? "increase" : "decrease"
+                  }`}
             </span>
           </div>
-        ) : null}
+          <span
+            className={`text-xs font-medium ${
+              trend === "up"
+                ? "text-green-400"
+                : trend === "down"
+                ? "text-red-400"
+                : "text-gray-400"
+            }`}
+          >
+            {trend !== "neutral" && `${Math.abs(percentChange).toFixed(1)}%`}
+          </span>
+        </div>
       </div>
     </motion.div>
   );

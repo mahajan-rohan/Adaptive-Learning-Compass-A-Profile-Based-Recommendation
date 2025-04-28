@@ -54,7 +54,7 @@ console.log("subject", subject);
     }
 
     console.log({ args });
- 
+
     // Path to your Python script - student-hub\script.py
     //const scriptPath = path.resolve(__dirname, "script.py"); // Use __dirname for absolute path
 

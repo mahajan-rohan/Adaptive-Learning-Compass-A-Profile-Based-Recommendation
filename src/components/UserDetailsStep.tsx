@@ -19,6 +19,8 @@ interface UserDetailsStepProps {
     username: string;
     semester?: string;
     type: boolean;
+    yearsOfExperience?: number;
+    certifications?: number;
   }) => void;
 }
 
@@ -35,7 +37,7 @@ export default function UserDetailsStep({ onSubmit }: UserDetailsStepProps) {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    onSubmit({ username, semester, type });
+    onSubmit({ username, semester, type, yearsOfExperience, certifications });
   };
 
   return (
@@ -83,33 +85,32 @@ export default function UserDetailsStep({ onSubmit }: UserDetailsStepProps) {
           </Select>
         </div>
       ) : (
-        // <>
-        //   <div className="space-y-2">
-        //     <Label htmlFor="yearsOfExperience">Years of Experience</Label>
-        //     <Input
-        //       id="yearsOfExperience"
-        //       type="number"
-        //       value={yearsOfExperience ?? ""}
-        //       onChange={(e) => setYearsOfExperience(Number(e.target.value))}
-        //         required
-        //         min={0}
-        //         max={60}
-        //     />
-        //   </div>
-        //   <div className="space-y-2">
-        //     <Label htmlFor="certifications">Certifications</Label>
-        //     <Input
-        //       id="certifications"
-        //       type="number"
-        //       value={certifications ?? ""}
-        //       onChange={(e) => setCertifications(Number(e.target.value))}
-        //         required
-        //         min={0}
-        //         max={200}
-        //     />
-        //   </div>
-          // </>
-          null
+        <>
+          <div className="space-y-2">
+            <Label htmlFor="yearsOfExperience">Years of Experience</Label>
+            <Input
+              id="yearsOfExperience"
+              type="number"
+              value={yearsOfExperience ?? ""}
+              onChange={(e) => setYearsOfExperience(Number(e.target.value))}
+                required
+                min={0}
+                max={60}
+            />
+          </div>
+          <div className="space-y-2">
+            <Label htmlFor="certifications">Certifications</Label>
+            <Input
+              id="certifications"
+              type="number"
+              value={certifications ?? ""}
+              onChange={(e) => setCertifications(Number(e.target.value))}
+                required
+                min={0}
+                max={200}
+            />
+          </div>
+        </>
       )}
       <Button type="submit" className="w-full">
         Next

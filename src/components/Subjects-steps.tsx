@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import Card from "./Card";
-import { Course } from "@/Context/context";
+import { Course } from "@/types/Course";
 
 export interface Subject extends Course {}
 
@@ -33,15 +33,13 @@ export default function SubjectsStep({
     totalMarks: 100,
     previousMarks: 0,
     updatedMarks: 0,
-    semester: "1",
+    semester: 1,
     isCodingSubject: false,
     isNonStudent: false,
     codingContestsAttempted: 0,
     projectsBuilt: 0,
     attendance: 0,
     studyHours: 0,
-    yearsOfExperience: 0,
-    certifications: 0,
   });
   const [isCodingSubject, setIsCodingSubject] = useState<boolean>(false);
 
@@ -69,15 +67,13 @@ export default function SubjectsStep({
         totalMarks: newSubject.totalMarks ?? 100,
         previousMarks: newSubject.previousMarks ?? 0,
         updatedMarks: newSubject.updatedMarks ?? 0,
-        semester: newSubject.semester ?? "1",
+        semester: newSubject.semester ?? 1,
         isCodingSubject: newSubject.isCodingSubject,
         isNonStudent: newSubject.isNonStudent,
         codingContestsAttempted: newSubject.codingContestsAttempted ?? 0,
         projectsBuilt: newSubject.projectsBuilt ?? 0,
         attendance: newSubject.attendance ?? 0,
         studyHours: newSubject.studyHours ?? 0,
-        yearsOfExperience: newSubject.yearsOfExperience ?? 0,
-        certifications: newSubject.certifications ?? 0,
       };
       onSubjectsChange([...subjects, newSubjectObj]);
       setNewSubject({
@@ -88,15 +84,13 @@ export default function SubjectsStep({
         totalMarks: 100,
         previousMarks: 0,
         updatedMarks: 0,
-        semester: "1",
+        semester: 1,
         isCodingSubject: false,
         isNonStudent: false,
         codingContestsAttempted: 0,
         projectsBuilt: 0,
         attendance: 0,
         studyHours: 0,
-        yearsOfExperience: 0,
-        certifications: 0,
       });
     }
   };
@@ -229,7 +223,7 @@ export default function SubjectsStep({
                 onChange={(e) =>
                   setNewSubject({
                     ...newSubject,
-                    semester: e.target.value,
+                    semester: Number(e.target.value),
                   })
                 }
                 className="w-full p-2 border rounded-md bg-background border-gray-100/10 border-1"
@@ -363,7 +357,6 @@ export default function SubjectsStep({
             course={subject}
             onUpdateMarks={handleUpdateMarks}
             isCodingSubject={subject.isCodingSubject}
-            type={type}
             // className="shadow-black/40 shadow-lg hover:shadow-black/60"
           />
         ))}
