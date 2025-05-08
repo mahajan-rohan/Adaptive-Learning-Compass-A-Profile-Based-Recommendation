@@ -141,7 +141,7 @@ export default function ResourcesPage({ params }: { params: Promise<Params> }) {
 
   if (!resourceData) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-screen w-full flex items-center justify-center">
         <div className="text-center">
           <AlertCircleIcon className="h-12 w-12 text-red-500 mx-auto mb-4" />
           <h2 className="text-xl font-medium">Error loading resources</h2>

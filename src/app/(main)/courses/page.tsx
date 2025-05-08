@@ -24,6 +24,8 @@ interface Course {
   attendance?: number;
   projectsBuilt?: number;
   codingContestsAttempted?: number;
+  yearsOfExperience?: number;
+  certifications?: number;
 }
 
 const Course = () => {
@@ -46,6 +48,8 @@ const Course = () => {
     studyHours: 0,
     projectsBuilt: 0,
     codingContestsAttempted: 0,
+    yearsOfExperience: 0,
+    certifications: 0,
   });
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true); // Add loading state
@@ -199,6 +203,8 @@ const Course = () => {
         totalMarks: 100,
         previousMarks: 0,
         updatedMarks: 0,
+        yearsOfExperience: 0,
+        certifications: 0,
       });
       const fetchCourses = async () => {
         try {
@@ -535,7 +541,48 @@ const Course = () => {
                     </>
                   )}
                 </>
-              ) : null}
+              ) : (
+                <>
+                  <div>
+                    <label className="block text-gray-300 mb-1">
+                      Years of Experience
+                    </label>
+                    <input
+                      type="number"
+                      value={newCourse.yearsOfExperience || 0}
+                      onChange={(e) =>
+                        setNewCourse({
+                          ...newCourse,
+                          yearsOfExperience: Number(e.target.value),
+                        })
+                      }
+                      className="w-full bg-gray-700/50 text-white rounded px-3 py-2"
+                      required
+                      min={0}
+                      max={100}
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-gray-300 mb-1">
+                      Certifications
+                    </label>
+                    <input
+                      type="number"
+                      value={newCourse.certifications || 0}
+                      onChange={(e) =>
+                        setNewCourse({
+                          ...newCourse,
+                          certifications: Number(e.target.value),
+                        })
+                      }
+                      className="w-full bg-gray-700/50 text-white rounded px-3 py-2"
+                      required
+                      min={0}
+                      max={100}
+                    />
+                  </div>
+                </>
+              )}
 
               {/* Submit & Cancel Buttons */}
               <div className="flex gap-4 mt-6">
