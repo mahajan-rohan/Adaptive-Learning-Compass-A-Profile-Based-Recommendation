@@ -35,7 +35,7 @@ const Course = () => {
   const [isNonStudent, setIsNonStudent] = useState(false);
   const [filter, setFilter] = useState<string>("all");
   const [newCourse, setNewCourse] = useState<Partial<Course>>({
-    // code: "",
+    code: "",
     title: "",
     color: COLORS[0],
     marksObtained: 0,
@@ -298,7 +298,7 @@ const Course = () => {
             </h3>
             <form onSubmit={handleAddCourse} className="space-y-4">
               {/* Course Code */}
-              {/* <div>
+              <div>
                 <label className="block text-gray-300 mb-1">Course Code</label>
                 <input
                   type="text"
@@ -309,7 +309,7 @@ const Course = () => {
                   className="w-full bg-gray-700/50 text-white rounded px-3 py-2"
                   required
                 />
-              </div> */}
+              </div>
 
               {/* Course Title */}
               <div>
